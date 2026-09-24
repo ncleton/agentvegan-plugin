@@ -42,7 +42,7 @@ AgentVegan ne commande et ne paie jamais à la place de l’utilisateur.
 
 Le dépôt contient le plugin et sa configuration MCP. Le plugin se connecte au service AgentVegan hébergé à l’adresse `https://mcp.agentvegan.org/mcp` : aucun serveur local n’est nécessaire.
 
-Lorsqu’une fonction personnelle est utilisée, AgentVegan ouvre son parcours de configuration et d’authentification. La connexion Picnic est facultative. Les mises à jour du plugin sont distribuées depuis ce dépôt GitHub.
+Lorsqu’une fonction personnelle est utilisée, AgentVegan ouvre son parcours de configuration et d’authentification. La connexion Picnic est facultative. Les fonctions hébergées évoluent dès leur déploiement. Pour recevoir les nouveaux textes, icônes et suggestions du plugin, actualisez AgentVegan depuis sa source GitHub dans ChatGPT Desktop, puis redémarrez l’application.
 
 ## Contenu du dépôt
 
