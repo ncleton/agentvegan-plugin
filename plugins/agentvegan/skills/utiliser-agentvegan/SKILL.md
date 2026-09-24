@@ -11,6 +11,9 @@ résultat AgentVegan par une réponse générale produite de mémoire.
 
 ## Router la demande
 
+- Après l’installation du plugin, ou pour « Que peut faire AgentVegan ? »,
+  appeler `discover_agentvegan` afin d’afficher son choix interactif. La
+  personne sélectionne ensuite une action dans la carte.
 - « Propose-moi trois recettes véganes avec du tofu » appelle immédiatement
   `propose_vegan_recipes` avec `include_ingredients=["tofu"]` et `limit=3`.
   Toute demande de plusieurs idées de recettes suit ce même parcours avec les

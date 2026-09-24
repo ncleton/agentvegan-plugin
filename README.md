@@ -11,12 +11,6 @@
 > **Compatibilité actuelle : application ChatGPT Desktop uniquement.**
 > Ce plugin n’est pas encore installable dans ChatGPT sur le Web ou sur mobile.
 
-> **État de la mise en service :** le dépôt est installable. Les recettes, la
-> planification et la carte des restaurants utilisent déjà le MCP public. La
-> connexion Picnic et le filtre dédié aux traiteurs sont présents dans cette
-> version du plugin, mais nécessitent encore la prochaine publication protégée
-> du MCP de production avant de fonctionner pour tous.
-
 ## Démarrage rapide
 
 1. Installez puis ouvrez l’[application ChatGPT pour ordinateur](https://chatgpt.com/download/).
@@ -28,7 +22,7 @@ Installe ce plugin : https://github.com/ncleton/agentvegan-plugin
 ```
 
 4. Acceptez l’installation lorsqu’elle est proposée, puis fermez complètement et relancez ChatGPT si l’application le demande.
-5. Essayez par exemple : `Trouve-moi un restaurant végane près de moi.`
+5. Choisissez une action dans la carte de bienvenue AgentVegan, ou demandez : `Découvre tout ce que je peux faire avec AgentVegan.`
 
 Il n’est pas nécessaire de connaître GitHub, d’utiliser le Terminal ou d’installer un serveur sur son ordinateur.
 

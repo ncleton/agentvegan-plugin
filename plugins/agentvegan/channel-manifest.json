@@ -5,7 +5,7 @@
   "files": [
     {
       "path": ".codex-plugin/plugin.json",
-      "sha256": "7665a2dfa3e7eeb22351a748a6bf6f6ee2801d9774eeb41d4d2503cc44c35a2c"
+      "sha256": "55e860a0995c0f9bea4b2f04dcc45f785b63a60a90e9165befa2e0f26ce62da0"
     },
     {
       "path": ".mcp.json",
@@ -17,11 +17,11 @@
     },
     {
       "path": "assets/public-recipe-catalog.json",
-      "sha256": "aafd3d3950399bfd441bcbfcd2c743ad20bb07567ad94a4ab681e2c67cc54937"
+      "sha256": "ee30090809dd44578ba4ddc3351e6b47f6813883fd6a62f290aecd310bc76b30"
     },
     {
       "path": "assets/public-recipe-details.json",
-      "sha256": "6ba6971ef93a8b8ad4180df00143225a2d46a98000ff668b6fc37c70414e5173"
+      "sha256": "6d8504654807fe4d316ae8f31545c4ae0f631c5ecb2c0ee6e2a7a5ebe219228c"
     },
     {
       "path": "skills/planifier-agentvegan/SKILL.md",
@@ -53,7 +53,7 @@
     },
     {
       "path": "skills/utiliser-agentvegan/SKILL.md",
-      "sha256": "0f3d64f272568826c34b4636aec9f3f599dd835a16247806ec1f808a93dc7c99"
+      "sha256": "f046b8360ce2e53671249f815338d2a84601736fc41e2a60e1f359eaa79ae8f7"
     },
     {
       "path": "skills/utiliser-agentvegan/agents/openai.yaml",
