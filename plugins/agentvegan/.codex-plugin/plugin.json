@@ -1,0 +1,46 @@
+{
+  "name": "agentvegan",
+  "version": "1.0.0",
+  "description": "Recettes, véganisation, planification, courses Picnic et adresses véganes dans ChatGPT.",
+  "author": {
+    "name": "Nicolas Cléton"
+  },
+  "homepage": "https://agentvegan.org/",
+  "repository": "https://github.com/ncleton/agentvegan-plugin",
+  "keywords": [
+    "vegan",
+    "nutrition",
+    "recettes",
+    "substituts",
+    "veganisation",
+    "picnic",
+    "planning",
+    "restaurants",
+    "traiteurs"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "AgentVegan",
+    "shortDescription": "Recettes, courses et adresses véganes",
+    "longDescription": "Transforme une recette traditionnelle en version végane, cherche les recettes publiées, calcule une semaine selon un profil consenti, trouve des restaurants et traiteurs véganes, et prépare les courses avec Picnic après confirmation.",
+    "developerName": "Nicolas Cléton",
+    "category": "Lifestyle",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://agentvegan.org/",
+    "privacyPolicyURL": "https://agentvegan.org/confidentialite",
+    "defaultPrompt": [
+      "Véganise cette recette et laisse-moi choisir les substituts.",
+      "Par quoi je peux remplacer le poulet ?",
+      "Planifie ma semaine végane selon mon profil.",
+      "Trouve-moi un restaurant végane près de moi.",
+      "Trouve un traiteur végane pour mon événement."
+    ],
+    "brandColor": "#225B32",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png"
+  }
+}

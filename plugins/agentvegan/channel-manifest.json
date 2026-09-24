@@ -1,0 +1,71 @@
+{
+  "contract_version": "agentvegan-plugin-channel-v1",
+  "channel": "public",
+  "generated_from": "plugins/agentvegan",
+  "files": [
+    {
+      "path": ".codex-plugin/plugin.json",
+      "sha256": "a135b7d2398fc7e97c111642cc3515096ae3af3ffcb33617e97f34b738e9766c"
+    },
+    {
+      "path": ".mcp.json",
+      "sha256": "2dd2b92a246c6adafbb42277920ff0f6bcad7607c4c5a3b28e6e895b8ff48fb5"
+    },
+    {
+      "path": "assets/icon.png",
+      "sha256": "ff15dcfeaf932c9f0d85df4eae884c4cf8b03e52a73bf700edb6a66516b2abf9"
+    },
+    {
+      "path": "assets/public-recipe-catalog.json",
+      "sha256": "aafd3d3950399bfd441bcbfcd2c743ad20bb07567ad94a4ab681e2c67cc54937"
+    },
+    {
+      "path": "assets/public-recipe-details.json",
+      "sha256": "33307c467158fadd15af5df307bd79c6bc27a679a1510a6e2d9242a0d3e49362"
+    },
+    {
+      "path": "skills/planifier-agentvegan/SKILL.md",
+      "sha256": "badcfd0f41efe98fada964ec583c0ecf775d4d76c7510a635ee92ff15f8b4da8"
+    },
+    {
+      "path": "skills/planifier-agentvegan/agents/openai.yaml",
+      "sha256": "20ff035092d783e0a72fcfafd35fbabde13a361cc9c0b598149144da7ba73624"
+    },
+    {
+      "path": "skills/planifier-agentvegan/references/contracts.md",
+      "sha256": "e3f31dfc45a168908bf087129bd4587e5b995ba23fcbc23ff8f6be8cdd575945"
+    },
+    {
+      "path": "skills/planifier-agentvegan/scripts/portable-solver.mjs",
+      "sha256": "e7b599b9ce42f8539a3f28e0ab1e18b652c7ca4b2d78807f4d0d0d4312a25336"
+    },
+    {
+      "path": "skills/planifier-agentvegan/scripts/solve-week.mjs",
+      "sha256": "35073240139127abca5df0259bfea918af6bf90dffc21923f933422ddf638950"
+    },
+    {
+      "path": "skills/substituer-avec-agentvegan/SKILL.md",
+      "sha256": "2d12f2ddcdd6cc1f7227cce253299fecbd4589fd122cc03cbbc87b06c4d9b66a"
+    },
+    {
+      "path": "skills/substituer-avec-agentvegan/agents/openai.yaml",
+      "sha256": "47cd02cab8b1f50f3d1d93350a46eecd431379492d82db5ae07427f6319cb6b8"
+    },
+    {
+      "path": "skills/utiliser-agentvegan/SKILL.md",
+      "sha256": "5e8b255f32ea64ef3caaafd86f60073a9871d200191a918f9ecfb7105d792c8a"
+    },
+    {
+      "path": "skills/utiliser-agentvegan/agents/openai.yaml",
+      "sha256": "0ebe66093b544a0f4e1c1130a26eff2182be4a7186482526e587d56955c0d019"
+    },
+    {
+      "path": "skills/veganiser-avec-agentvegan/SKILL.md",
+      "sha256": "eb90660f8c163de407ee00842c2cf61c28b146cc7ad9896c3c6261789bd4bcc0"
+    },
+    {
+      "path": "skills/veganiser-avec-agentvegan/agents/openai.yaml",
+      "sha256": "3949c62e7e3a9ffafdcee8b68f8b937ffcda6206df116ba05132e04fe1b055c5"
+    }
+  ]
+}

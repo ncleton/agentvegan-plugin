@@ -1,0 +1,10 @@
+title = "AgentVegan plugin public repository"
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Identifiants nutritionnels publics pris à tort pour des clés API"
+paths = ['''plugins/agentvegan/skills/planifier-agentvegan/scripts/portable-solver\.mjs''']
+regexTarget = "secret"
+regexes = ['''^(?:vitamin_b12_ug|omega3_ala_energy_ratio)$''']

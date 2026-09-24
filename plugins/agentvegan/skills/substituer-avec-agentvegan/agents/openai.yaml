@@ -1,0 +1,13 @@
+interface:
+  display_name: "Remplacer avec AgentVegan"
+  short_description: "Trouve des substituts véganes vérifiés"
+  default_prompt: "Par quoi je peux remplacer le poulet ?"
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "agentvegan"
+      description: "Références, visuels, enseignes et Nutri-Score de la page Substituts AgentVegan"
+      transport: "streamable_http"
+      url: "https://mcp.agentvegan.org/mcp"
+policy:
+  allow_implicit_invocation: true

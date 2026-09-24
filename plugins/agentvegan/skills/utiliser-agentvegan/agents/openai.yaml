@@ -1,0 +1,13 @@
+interface:
+  display_name: "Utiliser AgentVegan"
+  short_description: "Recettes, profil, semaine et courses réels"
+  default_prompt: "Propose-moi trois recettes véganes avec du tofu."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "agentvegan"
+      description: "Catalogue, profil, planning et liste de courses AgentVegan"
+      transport: "streamable_http"
+      url: "https://mcp.agentvegan.org/mcp"
+policy:
+  allow_implicit_invocation: true

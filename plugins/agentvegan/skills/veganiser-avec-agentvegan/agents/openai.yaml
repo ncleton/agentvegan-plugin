@@ -1,0 +1,13 @@
+interface:
+  display_name: "Véganiser avec AgentVegan"
+  short_description: "Transforme et illustre une recette végane"
+  default_prompt: "Utilise $veganiser-avec-agentvegan pour faire ce plat en version végane, me laisser choisir les produits, puis afficher la fiche avec un bouton séparé pour créer chaque photo d’étape et celle du plat final."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "agentvegan"
+      description: "Analyse de recette, choix de substituts vérifiés et interface Avant / Après AgentVegan"
+      transport: "streamable_http"
+      url: "https://mcp.agentvegan.org/mcp"
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,20 @@
+{
+  "name": "agentvegan",
+  "interface": {
+    "displayName": "AgentVegan"
+  },
+  "plugins": [
+    {
+      "name": "agentvegan",
+      "source": {
+        "source": "local",
+        "path": "./plugins/agentvegan"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Lifestyle"
+    }
+  ]
+}
