@@ -1,7 +1,7 @@
 {
   "name": "agentvegan",
-  "version": "1.0.0",
-  "description": "Recettes, véganisation, planification, courses Picnic et adresses véganes dans ChatGPT.",
+  "version": "1.0.1",
+  "description": "Recettes, substituts véganes, planification, courses Picnic et adresses véganes dans ChatGPT.",
   "author": {
     "name": "Nicolas Cléton"
   },
@@ -35,11 +35,9 @@
     "defaultPrompt": [
       "Véganise cette recette et laisse-moi choisir les substituts.",
       "Par quoi je peux remplacer le poulet ?",
-      "Planifie ma semaine végane selon mon profil.",
-      "Trouve-moi un restaurant végane près de moi.",
-      "Trouve un traiteur végane pour mon événement."
+      "Trouve-moi un restaurant ou un traiteur végane près de moi."
     ],
-    "brandColor": "#225B32",
+    "brandColor": "#14382D",
     "composerIcon": "./assets/icon.png",
     "logo": "./assets/icon.png"
   }

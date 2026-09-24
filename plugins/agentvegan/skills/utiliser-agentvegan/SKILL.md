@@ -30,12 +30,15 @@ résultat AgentVegan par une réponse générale produite de mémoire.
 - « Par quoi remplacer le poulet ? » appelle immédiatement
   `replace_animal_ingredient` et affiche uniquement les références vérifiées.
 - « Trouve-moi un restaurant vegan près de moi » appelle immédiatement
-  `find_vegan_locations` avec `category="restaurants"`. Utiliser uniquement les
-  établissements renvoyés par la carte réelle AgentVegan.
+  et exactement une fois `find_vegan_locations` avec `category="restaurants"`.
+  Utiliser uniquement les établissements renvoyés par la carte réelle AgentVegan.
 - « Je cherche un traiteur vegan pour un événement » appelle immédiatement
-  `find_vegan_locations` avec `category="caterers"`. Conserver la ville, les
-  filtres d’offre et le rayon demandés ; ne jamais compléter les résultats avec
-  des adresses produites de mémoire.
+  et exactement une fois `find_vegan_locations` avec `category="caterers"`.
+  Conserver la ville, les filtres d’offre et le rayon demandés. Dans `query`,
+  transmettre seulement la localité, la cuisine ou le nom recherché, jamais la
+  phrase complète de la personne. Si la carte ne renvoie aucun résultat, ne pas
+  rappeler l’outil et ne lancer aucune recherche Web ; conserver son état vide.
+  Ne jamais compléter les résultats avec des adresses produites de mémoire.
 
 Les cartes AgentVegan sont la source de vérité. Une réponse textuelle générique,
 un titre de recette inventé, une semaine composée librement ou une liste issue
