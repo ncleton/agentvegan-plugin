@@ -11,6 +11,12 @@
 > **Compatibilité actuelle : application ChatGPT Desktop uniquement.**
 > Ce plugin n’est pas encore installable dans ChatGPT sur le Web ou sur mobile.
 
+> **État de la mise en service :** le dépôt est installable. Les recettes, la
+> planification et la carte des restaurants utilisent déjà le MCP public. La
+> connexion Picnic et le filtre dédié aux traiteurs sont présents dans cette
+> version du plugin, mais nécessitent encore la prochaine publication protégée
+> du MCP de production avant de fonctionner pour tous.
+
 ## Démarrage rapide
 
 1. Installez puis ouvrez l’[application ChatGPT pour ordinateur](https://chatgpt.com/download/).
