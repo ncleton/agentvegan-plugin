@@ -1,6 +1,6 @@
 {
   "name": "agentvegan",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Recettes, substituts véganes, planification, courses Picnic et adresses véganes dans ChatGPT.",
   "author": {
     "name": "Nicolas Cléton"
@@ -34,8 +34,8 @@
     "privacyPolicyURL": "https://agentvegan.org/confidentialite",
     "defaultPrompt": [
       "Découvre tout ce que je peux faire avec AgentVegan.",
-      "Véganise cette recette et laisse-moi choisir les substituts.",
-      "Trouve-moi un restaurant ou un traiteur végane près de moi."
+      "Connecte mon compte Picnic à AgentVegan.",
+      "Véganise cette recette et laisse-moi choisir les substituts."
     ],
     "brandColor": "#14382D",
     "composerIcon": "./assets/icon.png",
