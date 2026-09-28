@@ -35,6 +35,10 @@ un planning certifié par raisonnement libre.
 - Afficher, ouvrir, configurer ou modifier explicitement le profil ou le tableau
   de bord : appeler `plan_week` avec `mode=configure_profile`. Les outils de
   profil sont internes à l'interface et ne sont pas appelés par le modèle.
+- Connecter ou utiliser Picnic sans demander une semaine : appeler
+  `get_picnic_connection_status`, puis `create_picnic_connection_link` si
+  aucune session n'est connectée. Présenter la page sécurisée à ouvrir dans
+  l'application ; ne jamais demander d'identifiants, de code ou de commande.
 - « Montre ma liste de courses », « affiche ma liste de courses » ou toute
   demande équivalente : appeler directement `get_shopping_list`. Cette carte
   est indépendante du profil ; ne jamais ouvrir le profil ni recopier les

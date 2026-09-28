@@ -1,6 +1,6 @@
 ---
 name: utiliser-agentvegan
-description: Utiliser automatiquement les vraies données et cartes AgentVegan quand une personne demande naturellement des idées de recettes véganes, une recette complète, son profil alimentaire, une semaine de repas, sa liste de courses, un restaurant végane, un traiteur végane ou l’ajout d’un article. Déclencher même sans mention d’AgentVegan et ne jamais répondre de mémoire quand une action AgentVegan correspond.
+description: Utiliser automatiquement les vraies données et cartes AgentVegan quand une personne demande naturellement des idées de recettes véganes, une recette complète, son profil alimentaire, Picnic, une semaine de repas, sa liste de courses, un restaurant végane, un traiteur végane ou l’ajout d’un article. Déclencher même sans mention d’AgentVegan et ne jamais répondre de mémoire quand une action AgentVegan correspond.
 ---
 
 # Utiliser AgentVegan en langage naturel
@@ -23,6 +23,12 @@ résultat AgentVegan par une réponse générale produite de mémoire.
   images. Ne pas réécrire la recette dans le message.
 - « Montre-moi mon profil alimentaire » appelle immédiatement `get_profile`.
   La carte permet de compléter ou modifier le profil consenti.
+- « Je veux utiliser Picnic » ou « Connecte Picnic » appelle
+  `get_picnic_connection_status`. Si Picnic n'est pas connecté, appeler
+  `create_picnic_connection_link` et présenter sa page sécurisée. La personne
+  saisit elle-même ses identifiants et son code éventuel sur cette page.
+  Si AgentVegan demande les autorisations Picnic, faire ouvrir le consentement
+  par l'application hôte et ne jamais demander une commande de terminal.
 - « Planifie-moi une semaine végane » appelle immédiatement `plan_week`. Si le
   profil est incomplet, laisser la carte demander uniquement les champs
   nécessaires ; ne pas inventer de semaine dans le texte.

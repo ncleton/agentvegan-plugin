@@ -22,7 +22,7 @@ Installe ce plugin : https://github.com/ncleton/agentvegan-plugin
 ```
 
 4. Acceptez l’installation lorsqu’elle est proposée, puis fermez complètement et relancez ChatGPT si l’application le demande.
-5. Choisissez une action dans la carte de bienvenue AgentVegan, ou demandez : `Découvre tout ce que je peux faire avec AgentVegan.`
+5. Choisissez une action dans la carte de bienvenue AgentVegan. Pour Picnic, choisissez « Connecte mon compte Picnic à AgentVegan », acceptez les autorisations affichées, puis ouvrez la page sécurisée proposée. Aucun Terminal n'est nécessaire.
 
 Il n’est pas nécessaire de connaître GitHub, d’utiliser le Terminal ou d’installer un serveur sur son ordinateur.
 
