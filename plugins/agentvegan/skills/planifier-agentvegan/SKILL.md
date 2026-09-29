@@ -74,6 +74,12 @@ souhaite planifier.
 
 ## Calculer une semaine
 
+Une demande explicite comme « organise ma semaine » constitue déjà
+l'autorisation de calculer et d'enregistrer la semaine certifiée. Appeler
+immédiatement `plan_week` et ne jamais demander de confirmation supplémentaire
+avant cet appel. Les confirmations du panier Picnic, d'une commande, d'une
+tâche planifiée ou d'une suppression restent distinctes.
+
 1. Appeler directement `plan_week`, sans appel préalable.
 2. S'il répond `code: profile_incomplete`, ne rien appeler d'autre : le même
    résultat affiche le wizard afin que la personne complète son profil.

@@ -44,6 +44,16 @@ Le dépôt contient le plugin et sa configuration MCP. Le plugin se connecte au 
 
 Lorsqu’une fonction personnelle est utilisée, AgentVegan ouvre son parcours de configuration et d’authentification. La connexion Picnic est facultative. Les fonctions hébergées évoluent dès leur déploiement. Pour recevoir les nouveaux textes, icônes et suggestions du plugin, actualisez AgentVegan depuis sa source GitHub dans ChatGPT Desktop, puis redémarrez l’application.
 
+## Modes de décision
+
+AgentVegan classe les recettes selon tes goûts et rapproche les produits avec l'un des trois modes, au choix :
+
+- **Laya (gratuit)** : s'exécute sur ton ordinateur, sans facturation d'inférence. Il est moins précis.
+- **Jev** : appelle l'API TypeSafe avec ta clé personnelle, facturée sur ton compte TypeSafe. Tu saisis la clé uniquement sur une page HTTPS sécurisée ouverte par AgentVegan, jamais dans la conversation. Elle est conservée chiffrée sur le serveur.
+- **Luna, réflexion faible** : s'exécute via Codex sur ton ordinateur, avec ton abonnement. Elle est plus lente et consomme les droits de ton compte Codex.
+
+Demande « Configure Jev », « utilise Laya » ou « passe sur Luna » dans la conversation. Laya et Luna exigent que ton ordinateur soit allumé et associé. AgentVegan ne bascule jamais d'un mode à un autre sans ta demande, et les modèles ne décident ni des quantités, ni des prix, ni du stock, ni des allergènes.
+
 ## Contenu du dépôt
 
 ```text
