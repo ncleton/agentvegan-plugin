@@ -5,11 +5,11 @@
   "files": [
     {
       "path": ".claude-plugin/plugin.json",
-      "sha256": "09b5041eb66b859598017f0a937b24413532fa5c915b07ce233aa93960623c6c"
+      "sha256": "58bb33c38baaac0c09fd42ad782e8cd73942c524a9c3c6552af8a1db4ecee04a"
     },
     {
       "path": ".codex-plugin/plugin.json",
-      "sha256": "6d6aa9ff5825de2844a76cbd48882e3b1a55bdff401edbf185b4c8fbbb5915e4"
+      "sha256": "bdabd24f7bb62a93cc48adf9dd0b505adac96a2a423180440f6d0ead472b4358"
     },
     {
       "path": ".mcp.json",
@@ -37,7 +37,7 @@
     },
     {
       "path": "skills/planifier-agentvegan/SKILL.md",
-      "sha256": "5886542831f9b6d9bb4d5de552254c65ff19ac2f9bac48bfede0e17edb5f9b67"
+      "sha256": "a783373dd4be76d84ba9ad74368dbe4fae9913305b55eb5ecdee43ce6beed885"
     },
     {
       "path": "skills/planifier-agentvegan/agents/openai.yaml",
@@ -65,7 +65,7 @@
     },
     {
       "path": "skills/utiliser-agentvegan/SKILL.md",
-      "sha256": "c65c90b9a174a87dfe09540e631a27d24819559c9618dd048825a4452ae7af25"
+      "sha256": "208f36725df383de274e0fd901862dc705bf20d8fdd5bc42a98886dced8a6ecd"
     },
     {
       "path": "skills/utiliser-agentvegan/agents/openai.yaml",

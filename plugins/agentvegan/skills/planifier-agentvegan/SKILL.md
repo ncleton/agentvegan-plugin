@@ -43,6 +43,15 @@ un planning certifié par raisonnement libre.
   demande équivalente : appeler directement `get_shopping_list`. Cette carte
   est indépendante du profil ; ne jamais ouvrir le profil ni recopier les
   articles dans le texte.
+- « T’as réussi à ajouter au panier tout ce qui est prévu ? », « qu’y a-t-il
+  dans mon panier Picnic ? », « que manque-t-il ? », « où en sont mes
+  courses ? » ou toute question sur l’état du panier : appeler
+  `get_picnic_cart_status` avant de répondre, jamais depuis la mémoire de la
+  conversation. La personne a pu agir elle-même dans la carte, dans l’app
+  Picnic ou via une tâche planifiée. Reprendre son `summary`. Si la lecture
+  échoue, donner le code et `next_action`, présenter l’état enregistré comme
+  non vérifié et ne jamais conclure que rien n’a été ajouté. La carte
+  `get_shopping_list` reste la présentation de la liste.
 - « Ajoute des carottes à ma liste de courses », « mets 2 kg de pommes de terre
   sur ma liste » ou toute demande équivalente : appeler directement
   `prepare_shopping_list_item`. Transmettre le nom exact et uniquement la
@@ -138,6 +147,10 @@ même planning doit rester idempotent.
    `confirmed: true`.
 5. Rapporter la relecture réelle du panier. Ne jamais sélectionner un créneau,
    commander ou payer.
+
+Pour toute question ultérieure sur ce qui est dans le panier ou ce qui reste à
+acheter, appeler `get_picnic_cart_status` : il relit le panier Picnic réel et le
+compare à la liste de courses.
 
 Lire [references/contracts.md](references/contracts.md) uniquement pour
 diagnostiquer une erreur de contexte, de certificat ou de validation Picnic.
