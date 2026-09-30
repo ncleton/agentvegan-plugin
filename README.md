@@ -2,87 +2,120 @@
   <img src="plugins/agentvegan/assets/icon.png" alt="Logo AgentVegan" width="120">
 </p>
 
-<h1 align="center">AgentVegan pour ChatGPT Desktop</h1>
+<h1 align="center">AgentVegan</h1>
 
 <p align="center">
-  Recettes véganes, véganisation, menus, courses Picnic, restaurants et traiteurs véganes directement dans ChatGPT.
+  Recettes véganes, menus de la semaine, courses Picnic, restaurants et traiteurs véganes, avec Codex, Claude Code ou LibreAgent.
 </p>
 
-> **Compatibilité actuelle : application ChatGPT Desktop uniquement.**
-> Ce plugin n’est pas encore installable dans ChatGPT sur le Web ou sur mobile.
+AgentVegan s'installe sur **votre** machine : votre ordinateur, ou votre propre
+VPS. C'est elle qui calcule vos menus, se connecte à Picnic et prépare vos
+courses. Le serveur AgentVegan ne garde que votre base de données (profil,
+menus, listes).
 
-## Démarrage rapide
+## Installation
 
-1. Installez puis ouvrez l’[application ChatGPT pour ordinateur](https://chatgpt.com/download/).
-2. Dans ChatGPT, ouvrez **Codex** et démarrez une nouvelle conversation.
-3. Copiez-collez exactement cette phrase :
+Il faut une machine sous **macOS ou Linux** (Windows arrive bientôt). L'agent
+installe lui-même Node.js s'il manque : vous n'ouvrez pas de terminal et vous ne
+copiez aucun code.
+
+**Avec Codex** (application ChatGPT pour ordinateur, onglet Codex, ou Codex en
+ligne de commande), écrivez :
 
 ```text
-Installe ce plugin : https://github.com/ncleton/agentvegan-plugin
+Installe ce plugin puis installe AgentVegan sur cet ordinateur : https://github.com/ncleton/agentvegan-plugin
 ```
 
-4. Acceptez l’installation lorsqu’elle est proposée, puis fermez complètement et relancez ChatGPT si l’application le demande.
-5. Choisissez une action dans la carte de bienvenue AgentVegan. Pour Picnic, choisissez « Connecte mon compte Picnic à AgentVegan », acceptez les autorisations affichées, puis ouvrez la page sécurisée proposée. Aucun Terminal n'est nécessaire.
+**Avec Claude Code**, ajoutez le catalogue puis le plugin :
 
-Il n’est pas nécessaire de connaître GitHub, d’utiliser le Terminal ou d’installer un serveur sur son ordinateur.
+```text
+/plugin marketplace add ncleton/agentvegan-plugin
+/plugin install agentvegan@agentvegan
+```
+
+puis écrivez « Installe AgentVegan sur cet ordinateur ».
+
+**Avec LibreAgent**, installez le plugin depuis GitHub
+(`https://github.com/ncleton/agentvegan-plugin`) sur l'ordinateur ou le VPS de
+votre choix, connectez AgentVegan dans **Services connectés**, puis écrivez
+« Installe AgentVegan sur cette machine ».
+
+Ensuite, l'agent :
+
+1. vous demande d'autoriser AgentVegan (un clic sur la page officielle) ;
+2. associe la machine à votre compte, sans code à recopier ;
+3. télécharge et vérifie le service AgentVegan, puis l'installe comme service
+   permanent qui redémarre avec la machine ;
+4. vous propose de connecter Picnic : vous saisissez vous-même vos identifiants
+   et le code SMS sur une page sécurisée ;
+5. vous propose de compléter votre profil, puis « Planifie ma semaine ».
+
+La machine doit rester allumée pour calculer les menus et faire les courses.
+Si elle est éteinte, AgentVegan l'indique (« En attente de votre ordinateur »)
+et reprend dès qu'elle revient.
 
 ## Ce que le plugin permet
 
 - chercher des recettes véganes et afficher leur fiche complète ;
-- véganiser une recette ou remplacer un ingrédient d’origine animale ;
-- créer une semaine de 21 repas à partir d’un profil alimentaire ;
-- gérer une liste de courses ;
-- connecter Picnic, prévisualiser un panier et l’ajouter uniquement après confirmation ;
-- trouver des restaurants véganes à proximité ;
-- trouver des traiteurs véganes pour un événement ;
-- demander une envie, par exemple « un resto vegan plutôt épicé » ou « un traiteur gourmand », et voir le meilleur choix autour de soi en premier.
+- véganiser une recette ou remplacer un ingrédient d'origine animale ;
+- créer une semaine de 21 repas à partir d'un profil alimentaire ;
+- gérer la liste de courses et la compléter chez Picnic ;
+- prévisualiser le panier Picnic et l'ajouter uniquement après confirmation ;
+- trouver des restaurants et des traiteurs véganes selon une envie.
 
-Chaque adresse affiche une photo et une première description quand elles existent, et le bouton « Ouvrir dans Google Maps » lance l'application Google Maps sur téléphone.
+AgentVegan ne commande et ne paie jamais à votre place.
 
-AgentVegan ne commande et ne paie jamais à la place de l’utilisateur.
+## Où s'exécute quoi
 
-## Comment cela fonctionne
+| Sur votre machine | Sur le serveur AgentVegan |
+|---|---|
+| Calcul des menus | Base de données du compte (profil, menus, listes) |
+| Connexion Picnic, recherche des produits, panier | Adresse de connexion des agents (`https://mcp.agentvegan.org/mcp`) |
+| Session Picnic, chiffrée avec une clé propre à la machine | |
+| Modes de décision Laya et Luna | |
 
-Le dépôt contient le plugin et sa configuration MCP. Le plugin se connecte au service AgentVegan hébergé à l’adresse `https://mcp.agentvegan.org/mcp` : aucun serveur local n’est nécessaire.
-
-Lorsqu’une fonction personnelle est utilisée, AgentVegan ouvre son parcours de configuration et d’authentification. La connexion Picnic est facultative. Les fonctions hébergées évoluent dès leur déploiement. Pour recevoir les nouveaux textes, icônes et suggestions du plugin, actualisez AgentVegan depuis sa source GitHub dans ChatGPT Desktop, puis redémarrez l’application.
+Votre mot de passe et votre code SMS Picnic ne sont jamais conservés. La
+session Picnic reste sur votre machine.
 
 ## Modes de décision
 
-AgentVegan classe les recettes selon tes goûts, les restaurants et traiteurs selon ton envie, et rapproche les produits avec l'un des trois modes, au choix :
+AgentVegan classe les recettes selon vos goûts et rapproche les produits avec
+l'un des trois modes :
 
-- **Laya (gratuit)** : s'exécute sur ton ordinateur, sans facturation d'inférence. Il est moins précis.
-- **Jev** : appelle l'API TypeSafe avec ta clé personnelle, facturée sur ton compte TypeSafe. Tu saisis la clé uniquement sur une page HTTPS sécurisée ouverte par AgentVegan, jamais dans la conversation. Elle est conservée chiffrée sur le serveur.
-- **Luna, réflexion faible** : s'exécute via Codex sur ton ordinateur, avec ton abonnement. Elle est plus lente et consomme les droits de ton compte Codex.
-
-Demande « Configure Jev », « utilise Laya » ou « passe sur Luna » dans la conversation. Laya et Luna exigent que ton ordinateur soit allumé et associé. AgentVegan ne bascule jamais d'un mode à un autre sans ta demande, et les modèles ne décident ni des quantités, ni des prix, ni du stock, ni des allergènes.
+- **Laya (gratuit)** : s'exécute sur votre machine, moins précis ;
+- **Jev** : utilise votre clé TypeSafe personnelle, saisie uniquement sur une
+  page sécurisée ;
+- **Luna, réflexion faible** : s'exécute via Codex sur votre machine, avec
+  votre abonnement.
 
 ## Contenu du dépôt
 
 ```text
-.agents/plugins/marketplace.json   Catalogue installable par Codex
-plugins/agentvegan/.codex-plugin/  Manifeste du plugin
-plugins/agentvegan/.mcp.json       Connexion au MCP AgentVegan hébergé
-plugins/agentvegan/skills/         Instructions des parcours AgentVegan
-plugins/agentvegan/assets/         Icône et catalogue public autorisé
+.agents/plugins/marketplace.json        Catalogue installable par Codex
+.claude-plugin/marketplace.json         Catalogue installable par Claude Code
+plugins/agentvegan/.codex-plugin/       Manifeste Codex
+plugins/agentvegan/.claude-plugin/      Manifeste Claude Code
+plugins/agentvegan/.mcp.json            Connexion au serveur AgentVegan
+plugins/agentvegan/installer/           Installateur du service sur la machine
+plugins/agentvegan/skills/              Parcours AgentVegan, dont l'installation
+plugins/agentvegan/assets/              Icône et catalogue public
 ```
 
 ## Confidentialité et sécurité
 
-- aucun identifiant Picnic, jeton, cookie ou profil utilisateur n’est présent dans ce dépôt ;
-- les connexions personnelles passent par l’authentification AgentVegan ;
+- aucun identifiant Picnic, jeton, cookie ou profil utilisateur n'est présent
+  dans ce dépôt ;
+- le service installé sur la machine n'est téléchargé qu'après association à
+  un compte, et son empreinte SHA-256 est vérifiée ;
 - toute modification du panier demande une confirmation explicite ;
-- la politique de confidentialité est disponible sur [agentvegan.org/confidentialite](https://agentvegan.org/confidentialite).
+- la politique de confidentialité est disponible sur
+  [agentvegan.org/confidentialite](https://agentvegan.org/confidentialite).
 
-Pour signaler une vulnérabilité, consultez [SECURITY.md](SECURITY.md). Pour obtenir de l’aide, consultez [SUPPORT.md](SUPPORT.md).
+Pour signaler une vulnérabilité, consultez [SECURITY.md](SECURITY.md). Pour
+obtenir de l'aide, consultez [SUPPORT.md](SUPPORT.md).
 
 ## Limites actuelles
 
-- l’installation GitHub du plugin fonctionne uniquement dans ChatGPT Desktop avec Codex ;
-- ChatGPT Web et les applications mobiles ne prennent pas encore en charge ce mode d’installation ;
-- Picnic doit être disponible pour le compte et la zone de livraison de l’utilisateur ;
-- les résultats de restaurants et traiteurs dépendent des établissements vérifiés dans le catalogue AgentVegan.
+- Windows n'est pas encore pris en charge.
+- ChatGPT sur le Web ne peut pas installer le service sur une machine.
 
-## Licence
-
-Aucune licence publique de réutilisation ou de redistribution n’est accordée pour le moment. Le dépôt est rendu public afin de permettre l’installation du plugin AgentVegan.

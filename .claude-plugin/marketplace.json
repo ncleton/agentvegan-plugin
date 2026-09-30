@@ -1,0 +1,16 @@
+{
+  "name": "agentvegan",
+  "owner": {
+    "name": "Nicolas Cléton"
+  },
+  "plugins": [
+    {
+      "name": "agentvegan",
+      "source": "./plugins/agentvegan",
+      "description": "Recettes, menus, courses Picnic et adresses véganes, exécutés sur votre ordinateur ou votre VPS."
+    }
+  ],
+  "metadata": {
+    "description": "Catalogue du plugin AgentVegan pour Claude Code."
+  }
+}
