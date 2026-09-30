@@ -61,6 +61,14 @@ résultat AgentVegan par une réponse générale produite de mémoire.
   phrase complète de la personne. Si la carte ne renvoie aucun résultat, ne pas
   rappeler l’outil et ne lancer aucune recherche Web ; conserver son état vide.
   Ne jamais compléter les résultats avec des adresses produites de mémoire.
+- « Un resto vegan plutôt épicé à Lyon », « un traiteur gourmand près de
+  moi » ou toute autre envie (romantique, en terrasse, pour un anniversaire…)
+  appelle le même outil une seule fois avec la localité dans `query` et chaque
+  envie dans `preferences` (une à huit). Le mode de décision du compte (Jev,
+  Laya ou Luna) classe alors les adresses les plus proches ; la carte montre le
+  meilleur choix en premier, avec sa photo, sa première description et son
+  lien Google Maps. Ne jamais transformer une envie en filtre de `query` ni
+  réordonner la carte dans le message.
 
 Les cartes AgentVegan sont la source de vérité. Une réponse textuelle générique,
 un titre de recette inventé, une semaine composée librement ou une liste issue

@@ -5,7 +5,7 @@
   "files": [
     {
       "path": ".codex-plugin/plugin.json",
-      "sha256": "ef38aa287420e230ebdbbc02383810f263239638a20f2d851fd3d3432f27f98e"
+      "sha256": "f3e44ac3715e82c5319e6121c5fbcccdae4982abe1ad2f56152f95d8856d384c"
     },
     {
       "path": ".mcp.json",
@@ -53,7 +53,7 @@
     },
     {
       "path": "skills/utiliser-agentvegan/SKILL.md",
-      "sha256": "90a6dea656053031659c5390071fc94612468f9d72b610c0641d711b1564ff4d"
+      "sha256": "c65c90b9a174a87dfe09540e631a27d24819559c9618dd048825a4452ae7af25"
     },
     {
       "path": "skills/utiliser-agentvegan/agents/openai.yaml",

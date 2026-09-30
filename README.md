@@ -34,7 +34,10 @@ Il n’est pas nécessaire de connaître GitHub, d’utiliser le Terminal ou d�
 - gérer une liste de courses ;
 - connecter Picnic, prévisualiser un panier et l’ajouter uniquement après confirmation ;
 - trouver des restaurants véganes à proximité ;
-- trouver des traiteurs véganes pour un événement.
+- trouver des traiteurs véganes pour un événement ;
+- demander une envie, par exemple « un resto vegan plutôt épicé » ou « un traiteur gourmand », et voir le meilleur choix autour de soi en premier.
+
+Chaque adresse affiche une photo et une première description quand elles existent, et le bouton « Ouvrir dans Google Maps » lance l'application Google Maps sur téléphone.
 
 AgentVegan ne commande et ne paie jamais à la place de l’utilisateur.
 
@@ -46,7 +49,7 @@ Lorsqu’une fonction personnelle est utilisée, AgentVegan ouvre son parcours d
 
 ## Modes de décision
 
-AgentVegan classe les recettes selon tes goûts et rapproche les produits avec l'un des trois modes, au choix :
+AgentVegan classe les recettes selon tes goûts, les restaurants et traiteurs selon ton envie, et rapproche les produits avec l'un des trois modes, au choix :
 
 - **Laya (gratuit)** : s'exécute sur ton ordinateur, sans facturation d'inférence. Il est moins précis.
 - **Jev** : appelle l'API TypeSafe avec ta clé personnelle, facturée sur ton compte TypeSafe. Tu saisis la clé uniquement sur une page HTTPS sécurisée ouverte par AgentVegan, jamais dans la conversation. Elle est conservée chiffrée sur le serveur.
