@@ -33,6 +33,12 @@ résultat AgentVegan par une réponse générale produite de mémoire.
   profil est incomplet, laisser la carte demander uniquement les champs
   nécessaires ; ne pas inventer de semaine dans le texte.
 - « Affiche ma liste de courses » appelle immédiatement `get_shopping_list`.
+- « T’as réussi à ajouter au panier tout ce qui est prévu ? », « qu’y a-t-il
+  dans mon panier ? » ou « où en sont mes courses ? » appelle immédiatement
+  `get_picnic_cart_status`, jamais une réponse de mémoire : la personne a pu
+  agir dans la carte, dans l’app Picnic ou via une tâche planifiée. Reprendre
+  son résumé ; en cas d’erreur de lecture, donner le code et l’action indiquée
+  sans conclure que rien n’a été ajouté.
 - « Ajoute du lait de soja à ma liste de courses » appelle immédiatement
   `prepare_shopping_list_item` avec le nom exact et sans quantité inventée. La
   personne vérifie puis confirme dans la carte avant l’écriture.
