@@ -42,6 +42,13 @@ Windows n'est pas encore pris en charge : dis-le clairement et arrête.
 
    Le code est valable dix minutes et une seule fois. En cas de refus
    d'association, redemande un code et relance une seule fois.
+
+   L'installateur télécharge le service sur Internet et l'enregistre comme
+   service de fond hors du dossier de travail. Si l'environnement de
+   l'agent limite le réseau ou l'écriture (bac à sable Codex ou LibreAgent),
+   lance directement cette commande avec les autorisations étendues : la
+   personne n'a qu'à approuver la demande affichée par son application. Ne
+   contourne jamais un refus.
 3. L'installateur télécharge le service local, vérifie son empreinte, construit
    le catalogue des menus sur la machine (une à deux minutes), installe un
    service permanent et attend sa connexion au serveur. Il affiche une ligne
@@ -73,4 +80,3 @@ N'annonce jamais la fin si l'installateur n'a pas affiché `"connected": true`.
 Si une action AgentVegan répond « En attente de votre ordinateur », la machine
 associée est éteinte ou son service est arrêté : relance l'étape 3 avec
 `--update` sur cette machine.
-

@@ -5,11 +5,11 @@
   "files": [
     {
       "path": ".claude-plugin/plugin.json",
-      "sha256": "a824ef22d19b37e361ed855e6cacbcb35bf1243ecc5d37544d12ed3f9befbd14"
+      "sha256": "09b5041eb66b859598017f0a937b24413532fa5c915b07ce233aa93960623c6c"
     },
     {
       "path": ".codex-plugin/plugin.json",
-      "sha256": "594d077b0e42f8040902dc1aa89f5902bfe48be56ab41c6b467a8718a7c20120"
+      "sha256": "6d6aa9ff5825de2844a76cbd48882e3b1a55bdff401edbf185b4c8fbbb5915e4"
     },
     {
       "path": ".mcp.json",
@@ -33,7 +33,7 @@
     },
     {
       "path": "skills/installer-agentvegan/SKILL.md",
-      "sha256": "45faf244d18c33d8acfef8371c67c2512d1f8ee5cf7ea7b4e81d22a109afc70b"
+      "sha256": "2191bb85c9c80e3a66007008dee560bc158d2cf1ebad1ff3833b80dd2ca43936"
     },
     {
       "path": "skills/planifier-agentvegan/SKILL.md",
