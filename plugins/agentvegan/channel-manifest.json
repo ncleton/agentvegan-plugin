@@ -4,8 +4,12 @@
   "generated_from": "plugins/agentvegan",
   "files": [
     {
+      "path": ".claude-plugin/plugin.json",
+      "sha256": "a824ef22d19b37e361ed855e6cacbcb35bf1243ecc5d37544d12ed3f9befbd14"
+    },
+    {
       "path": ".codex-plugin/plugin.json",
-      "sha256": "f3e44ac3715e82c5319e6121c5fbcccdae4982abe1ad2f56152f95d8856d384c"
+      "sha256": "594d077b0e42f8040902dc1aa89f5902bfe48be56ab41c6b467a8718a7c20120"
     },
     {
       "path": ".mcp.json",
@@ -22,6 +26,14 @@
     {
       "path": "assets/public-recipe-details.json",
       "sha256": "bc171bfac6f6f51a9f625607c60999489adceb0694932b963c2949ea60acff60"
+    },
+    {
+      "path": "installer/install-agentvegan.mjs",
+      "sha256": "857bf2078ade8d3cc8b040c6fef64492c18f83c77041028b51b2302deb59b4bc"
+    },
+    {
+      "path": "skills/installer-agentvegan/SKILL.md",
+      "sha256": "45faf244d18c33d8acfef8371c67c2512d1f8ee5cf7ea7b4e81d22a109afc70b"
     },
     {
       "path": "skills/planifier-agentvegan/SKILL.md",

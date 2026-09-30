@@ -1,7 +1,7 @@
 {
   "name": "agentvegan",
-  "version": "1.0.5",
-  "description": "Recettes, substituts véganes, planification, courses Picnic et adresses véganes dans ChatGPT.",
+  "version": "1.0.6",
+  "description": "Recettes, substituts véganes, planification, courses Picnic et adresses véganes, exécutés sur votre ordinateur ou votre VPS.",
   "author": {
     "name": "Nicolas Cléton"
   },

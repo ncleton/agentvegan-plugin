@@ -1,0 +1,17 @@
+{
+  "name": "agentvegan",
+  "version": "1.0.6",
+  "description": "Recettes, substituts véganes, planification, courses Picnic et adresses véganes, exécutés sur votre ordinateur ou votre VPS.",
+  "author": {
+    "name": "Nicolas Cléton"
+  },
+  "homepage": "https://agentvegan.org/",
+  "repository": "https://github.com/ncleton/agentvegan-plugin",
+  "license": "MIT",
+  "keywords": [
+    "vegan",
+    "recettes",
+    "picnic",
+    "planning"
+  ]
+}
