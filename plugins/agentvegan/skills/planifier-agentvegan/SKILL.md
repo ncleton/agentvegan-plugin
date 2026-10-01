@@ -89,25 +89,26 @@ immédiatement `plan_week` et ne jamais demander de confirmation supplémentaire
 avant cet appel. Les confirmations du panier Picnic, d'une commande, d'une
 tâche planifiée ou d'une suppression restent distinctes.
 
-1. Appeler directement `plan_week`, sans appel préalable.
+1. Appeler directement `plan_week`, sans appel préalable : ne pas relire ce
+   fichier, ne pas chercher d’autres outils et ne pas vérifier Picnic avant.
+   `plan_week` détecte lui-même le profil et la connexion Picnic.
 2. S'il répond `code: profile_incomplete`, ne rien appeler d'autre : le même
    résultat affiche le wizard afin que la personne complète son profil.
 3. Les besoins nutritionnels non prouvés sont des avertissements informatifs :
    `plan_week` enregistre quand même la semaine avec `status: saved_with_warnings`.
    Les signaler brièvement sans demander d'acceptation et sans bloquer l'affichage.
 4. S'il répond `outcome: success` avec `status: certified` ou
-   `status: saved_with_warnings`, présenter les 21 repas certifiés. La carte
-   propose un bouton vers la liste de courses autonome. Si Picnic est connecté ou si la
-   personne demande explicitement un panier Picnic, appeler
-   `get_picnic_connection_status`, puis `start_picnic_validation` avec le
-   `plan_id` et le `plan_hash` validés. Ne jamais relancer automatiquement un
-   `401`, `403` ou `429`.
-5. Après tout résultat de `plan_week` qui affiche une semaine, demander
-   systématiquement : « Veux-tu que ChatGPT prépare automatiquement ta prochaine
-   semaine AgentVegan ? Si oui, donne-moi la date, l’heure et précise si ce doit
-   être ponctuel ou hebdomadaire. » Ne pas poser cette question après une simple
-   recherche de recettes, une substitution ou l'affichage du profil.
-6. Si la personne accepte, recueillir la date, l'heure et le rythme. Demander
+   `status: saved_with_warnings`, la carte affiche les 21 repas, le résumé des
+   courses et, si Picnic est connecté, le bouton « Ajouter au panier Picnic » en
+   haut. `plan_week` a déjà vérifié les produits Picnic : n’appeler ni
+   `get_picnic_connection_status` ni `start_picnic_validation` ensuite.
+5. Sous la carte, écrire uniquement la phrase renvoyée par `plan_week`, par
+   exemple « Ta semaine est prête. Touche « Ajouter au panier Picnic » en haut de
+   la carte. » Ne pas répéter que la semaine a été calculée, ne pas résumer les
+   repas et ne jamais expliquer la mécanique interne. La programmation de la
+   semaine suivante est proposée dans la carte.
+6. Si la personne demande à programmer la semaine suivante, recueillir la date,
+   l'heure et le rythme. Demander
    seulement les informations manquantes. Une fois les trois connues, créer une
    vraie tâche planifiée ChatGPT dans la conversation courante. L'interface
    propose par défaut « Ajouter au panier Picnic automatiquement » lorsque

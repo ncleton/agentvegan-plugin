@@ -5,11 +5,11 @@
   "files": [
     {
       "path": ".claude-plugin/plugin.json",
-      "sha256": "58bb33c38baaac0c09fd42ad782e8cd73942c524a9c3c6552af8a1db4ecee04a"
+      "sha256": "e21972900a8b82c798c2dd3179f462e4fa7e8921256f9b82f0a023eb3c62901a"
     },
     {
       "path": ".codex-plugin/plugin.json",
-      "sha256": "bdabd24f7bb62a93cc48adf9dd0b505adac96a2a423180440f6d0ead472b4358"
+      "sha256": "30d1e9e3e8ab3635dc89507177d44a4bd30458927926ed5dfb46ad0eb2e600d1"
     },
     {
       "path": ".mcp.json",
@@ -37,7 +37,7 @@
     },
     {
       "path": "skills/planifier-agentvegan/SKILL.md",
-      "sha256": "a783373dd4be76d84ba9ad74368dbe4fae9913305b55eb5ecdee43ce6beed885"
+      "sha256": "442516ecad9fee5409831a6db8c20bdebb9253e379c7583b0ccd9fb2a33bcd7b"
     },
     {
       "path": "skills/planifier-agentvegan/agents/openai.yaml",
