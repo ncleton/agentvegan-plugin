@@ -60,6 +60,16 @@ résultat AgentVegan par une réponse générale produite de mémoire.
 - « Trouve-moi un restaurant vegan près de moi » appelle immédiatement
   et exactement une fois `find_vegan_locations` avec `category="restaurants"`.
   Utiliser uniquement les établissements renvoyés par la carte réelle AgentVegan.
+- Si le message contient une position partagée, par exemple « Ma position
+  actuelle (partagée depuis LibreAgent) : latitude …, longitude … », transmettre
+  `latitude` et `longitude`, y compris quand un lieu est aussi nommé.
+- Transmettre dans `query` le lieu tel que la personne le formule : « centre de
+  Lille », « Vieux-Lille », « gare Part-Dieu » ou « japonais à Wazemmes ».
+  AgentVegan géocode ce lieu et cherche dans un rayon adapté ; ne jamais le
+  réduire à la seule ville.
+- Sans lieu ni position, appeler l’outil sans `query` : la carte demande la
+  position de l’appareil. Si `summary.needs_device_position` reste vrai,
+  demander à la personne sa ville, son quartier ou une adresse.
 - « Je cherche un traiteur vegan pour un événement » appelle immédiatement
   et exactement une fois `find_vegan_locations` avec `category="caterers"`.
   Conserver la ville, les filtres d’offre et le rayon demandés. Dans `query`,
