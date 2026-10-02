@@ -1,6 +1,6 @@
 ---
 name: utiliser-agentvegan
-description: Utiliser automatiquement les vraies données et cartes AgentVegan quand une personne demande naturellement des idées de recettes véganes, une recette complète, ce qu’elle cuisine aujourd’hui, une recette en PDF, ses notifications AgentVegan, son profil alimentaire, Picnic, une semaine de repas, sa liste de courses, un restaurant végane, un traiteur végane ou l’ajout d’un article. Déclencher même sans mention d’AgentVegan et ne jamais répondre de mémoire quand une action AgentVegan correspond.
+description: Utiliser automatiquement les vraies données et cartes AgentVegan quand une personne demande naturellement des idées de recettes véganes, une recette complète, ce qu’elle cuisine aujourd’hui, une recette en PDF, ses notifications ou réglages AgentVegan, ses essentiels du quotidien à ajouter au panier Picnic (pain, papier toilette…), son profil alimentaire, Picnic, une semaine de repas, sa liste de courses, un restaurant végane, un traiteur végane ou l’ajout d’un article. Déclencher même sans mention d’AgentVegan et ne jamais répondre de mémoire quand une action AgentVegan correspond.
 ---
 
 # Utiliser AgentVegan en langage naturel
@@ -89,6 +89,25 @@ résultat AgentVegan par une réponse générale produite de mémoire.
 Les cartes AgentVegan sont la source de vérité. Une réponse textuelle générique,
 un titre de recette inventé, une semaine composée librement ou une liste issue
 de la mémoire de ChatGPT constitue un échec de routage.
+
+## Mes essentiels du quotidien
+
+- « Ajoute le pain à mes essentiels », « mets du papier toilette dans mon
+  panier tous les mois », « mes produits du quotidien », « mes essentiels » ou
+  toute demande équivalente appelle `get_essentials`. Si un produit est nommé,
+  transmettre `search` avec son nom : la carte affiche les vrais produits
+  Picnic et la personne choisit elle-même le produit, la quantité et le rythme
+  (chaque semaine ou chaque mois). Ne jamais annoncer qu’un produit est ajouté
+  avant ce choix.
+- La carte règle aussi le mode d’ajout : « Je valide avant l’ajout » (les
+  essentiels apparaissent à part dans la liste de courses et dans la
+  confirmation d’ajout au panier) ou « Ajout automatique » (AgentVegan les met
+  directement dans le panier Picnic le jour choisi). Aucun mode ne sélectionne
+  de créneau, ne commande ni ne paie.
+- « Ouvre mes réglages » appelle `get_notification_settings` : la carte des
+  réglages réunit les notifications, le choix « Je décide des recettes avec
+  l’agent » ou « Je fais confiance à l’agent » pour la semaine suivante, et un
+  accès à Mes essentiels.
 
 ## Recettes du jour, PDF et notifications
 
