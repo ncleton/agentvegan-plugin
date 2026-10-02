@@ -61,6 +61,9 @@ et reprend dès qu'elle revient.
   pas à pas, à l'heure choisie ;
 - télécharger une recette ou les recettes du jour en PDF ;
 - régler les notifications de l'agent (recettes du jour, semaine suivante) ;
+- choisir ses essentiels du quotidien (pain, papier toilette…) et les retrouver
+  dans le panier Picnic chaque semaine ou chaque mois, après validation ou
+  automatiquement, sans jamais commander ni payer ;
 - véganiser une recette ou remplacer un ingrédient d'origine animale ;
 - créer une semaine de 21 repas à partir d'un profil alimentaire ;
 - gérer la liste de courses et la compléter chez Picnic ;
