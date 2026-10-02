@@ -149,6 +149,11 @@ même planning doit rester idempotent.
 5. Rapporter la relecture réelle du panier. Ne jamais sélectionner un créneau,
    commander ou payer.
 
+Quand la personne indique avoir passé ou validé sa commande, proposer en une
+phrase de recevoir chaque jour les étapes des recettes du jour et leur PDF :
+appeler `get_notification_settings`, puis suivre la skill
+`utiliser-agentvegan` pour enregistrer les réglages et programmer la tâche.
+
 Pour toute question ultérieure sur ce qui est dans le panier ou ce qui reste à
 acheter, appeler `get_picnic_cart_status` : il relit le panier Picnic réel et le
 compare à la liste de courses.

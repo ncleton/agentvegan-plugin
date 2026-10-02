@@ -1,6 +1,6 @@
 ---
 name: utiliser-agentvegan
-description: Utiliser automatiquement les vraies données et cartes AgentVegan quand une personne demande naturellement des idées de recettes véganes, une recette complète, son profil alimentaire, Picnic, une semaine de repas, sa liste de courses, un restaurant végane, un traiteur végane ou l’ajout d’un article. Déclencher même sans mention d’AgentVegan et ne jamais répondre de mémoire quand une action AgentVegan correspond.
+description: Utiliser automatiquement les vraies données et cartes AgentVegan quand une personne demande naturellement des idées de recettes véganes, une recette complète, ce qu’elle cuisine aujourd’hui, une recette en PDF, ses notifications AgentVegan, son profil alimentaire, Picnic, une semaine de repas, sa liste de courses, un restaurant végane, un traiteur végane ou l’ajout d’un article. Déclencher même sans mention d’AgentVegan et ne jamais répondre de mémoire quand une action AgentVegan correspond.
 ---
 
 # Utiliser AgentVegan en langage naturel
@@ -89,3 +89,42 @@ résultat AgentVegan par une réponse générale produite de mémoire.
 Les cartes AgentVegan sont la source de vérité. Une réponse textuelle générique,
 un titre de recette inventé, une semaine composée librement ou une liste issue
 de la mémoire de ChatGPT constitue un échec de routage.
+
+## Recettes du jour, PDF et notifications
+
+- « Qu’est-ce que je cuisine aujourd’hui ? », « mes recettes du jour », « les
+  étapes de mon dîner » ou « et demain ? » appelle `get_daily_recipes`, avec
+  `date` au format AAAA-MM-JJ pour un autre jour. La carte affiche toutes les
+  étapes illustrées, un mode pas à pas avec minuteurs et le PDF de la journée.
+  Dans ChatGPT, écrire une seule phrase et le lien PDF, sans recopier les
+  étapes. Sans carte (Codex, Claude Code), présenter les recettes renvoyées.
+  Si `status` n’est pas `ready`, reprendre uniquement `message`.
+- « Télécharge le PDF », « envoie-moi la recette en PDF » ou « je veux
+  l’imprimer » appelle `get_recipe_pdf` : sans argument pour les recettes du
+  jour, `recipe_ids` pour des recettes choisies, `generation_id` pour une
+  recette véganisée. Le lien est signé et valable huit jours.
+- Sur un ordinateur avec Codex ou Claude Code, télécharger réellement le
+  fichier : créer `~/Downloads/AgentVegan`, lancer
+  `curl -fL -o ~/Downloads/AgentVegan/<filename> "<pdf.url>"`, vérifier que le
+  fichier commence par `%PDF`, puis donner son chemin. En cas d’échec, donner
+  le code HTTP et le message de la page au lieu d’annoncer un téléchargement.
+- « Configure mes notifications », « envoie-moi les recettes tous les jours à
+  18 h », « coupe les notifications » ou toute demande équivalente appelle
+  `get_notification_settings` pour afficher la carte, ou
+  `save_notification_settings` avec uniquement les champs demandés. Quand la
+  personne indique avoir passé ou validé sa commande, proposer en une phrase
+  de recevoir chaque jour les recettes du jour, à partir du jour de livraison
+  si elle le donne (`starts_on`).
+- Après l’enregistrement, appliquer chaque entrée de `automations` avec l’outil
+  de tâches planifiées de l’application, sans créer de doublon :
+  `create_or_update` crée ou met à jour la tâche avec son nom, son `rrule`, son
+  fuseau et son `prompt` exact ; `delete_if_exists` supprime la tâche du même
+  nom si elle existe.
+  - ChatGPT : créer la tâche planifiée native dans la conversation courante.
+  - Codex : utiliser l’outil d’automatisations de Codex, en tâche heartbeat
+    rattachée à la conversation, avec `notificationPolicy=failed_runs_only`
+    lorsque `notify_only_when_action_needed` vaut vrai.
+  - Claude Code ou LibreAgent : utiliser leur outil de tâches planifiées. S’il
+    n’en existe pas, dire clairement que cette application ne peut pas
+    programmer la tâche et donner la consigne `prompt` à lancer à la main.
+  Ne jamais annoncer qu’une tâche existe avant la confirmation de l’application.
