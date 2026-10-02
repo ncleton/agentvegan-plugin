@@ -57,6 +57,10 @@ et reprend dès qu'elle revient.
 ## Ce que le plugin permet
 
 - chercher des recettes véganes et afficher leur fiche complète ;
+- recevoir chaque jour les étapes illustrées des recettes prévues, avec un mode
+  pas à pas, à l'heure choisie ;
+- télécharger une recette ou les recettes du jour en PDF ;
+- régler les notifications de l'agent (recettes du jour, semaine suivante) ;
 - véganiser une recette ou remplacer un ingrédient d'origine animale ;
 - créer une semaine de 21 repas à partir d'un profil alimentaire ;
 - gérer la liste de courses et la compléter chez Picnic ;
@@ -118,4 +122,3 @@ obtenir de l'aide, consultez [SUPPORT.md](SUPPORT.md).
 
 - Windows n'est pas encore pris en charge.
 - ChatGPT sur le Web ne peut pas installer le service sur une machine.
-
