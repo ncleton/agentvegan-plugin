@@ -1,6 +1,6 @@
 ---
 name: utiliser-agentvegan
-description: Utiliser automatiquement les vraies données et cartes AgentVegan quand une personne demande naturellement des idées de recettes véganes, une recette complète, ce qu’elle cuisine aujourd’hui, une recette en PDF, ses notifications ou réglages AgentVegan, ses essentiels du quotidien à ajouter au panier Picnic (pain, papier toilette…), son profil alimentaire, Picnic, une semaine de repas, sa liste de courses, un restaurant végane, un traiteur végane ou l’ajout d’un article. Déclencher même sans mention d’AgentVegan et ne jamais répondre de mémoire quand une action AgentVegan correspond.
+description: Utiliser automatiquement les vraies données et cartes AgentVegan quand une personne demande naturellement des idées de recettes véganes, une recette complète, ce qu’elle cuisine aujourd’hui, une recette en PDF, ses notifications ou réglages AgentVegan, ses essentiels du quotidien à ajouter au panier Picnic (pain, papier toilette…), un lien Instagram de recette à importer, sa collection Instagram à suivre, sa collection perso de recettes, le partage d’une recette sur agentvegan.org, la sauvegarde de ses recettes en PDF dans Google Drive, son profil alimentaire, Picnic, une semaine de repas, sa liste de courses, un restaurant végane, un traiteur végane ou l’ajout d’un article. Déclencher même sans mention d’AgentVegan et ne jamais répondre de mémoire quand une action AgentVegan correspond.
 ---
 
 # Utiliser AgentVegan en langage naturel
@@ -147,3 +147,108 @@ de la mémoire de ChatGPT constitue un échec de routage.
     n’en existe pas, dire clairement que cette application ne peut pas
     programmer la tâche et donner la consigne `prompt` à lancer à la main.
   Ne jamais annoncer qu’une tâche existe avant la confirmation de l’application.
+
+## Recettes Instagram et collection perso
+
+Toute recette importée suit le même parcours, qu'elle vienne d'un lien partagé
+dans la conversation ou de la collection Instagram suivie chaque jour. La
+machine associée télécharge la publication, transcrit l'audio en local et
+extrait des images ; l'agent rédige la recette ; la machine la classe comme sur
+agentvegan.org, calcule sa nutrition officielle, l'ajoute au planificateur,
+produit son PDF et, si l'export est activé, le copie dans Google Drive.
+
+- Un lien instagram.com/reel/…, /p/… ou /tv/… partagé, ou « importe cette
+  recette Instagram », appelle `import_instagram_recipe` avec le lien. Si
+  `state` vaut `already_imported`, dis-le en une phrase et arrête-toi.
+- Appelle ensuite `get_recipe_import` avec `import_id`. Tant que `state`
+  vaut `preparing`, attends une vingtaine de secondes et relis-le (au plus
+  15 fois). La première fois, la machine installe ses outils d'import : cela
+  peut prendre quelques minutes.
+- Quand `state` vaut `ready`, lis toute la légende, la transcription et
+  chaque image jointe, puis rédige la recette en JSON selon
+  `recipe_authoring_contract`, en français, sans inventer aucune quantité,
+  portion ou étape. Choisis `food_identity` dans `food_identities`. Si la
+  source contient un produit animal, adapte-le et décris-le dans
+  `adaptation`. Si une donnée indispensable manque dans toutes les sources,
+  n'enregistre rien et explique ce qui manque.
+- Appelle `save_imported_recipe` avec `import_id` et `recipe_json`. Sans
+  consigne de la personne, n'envoie pas `share_publicly` : le réglage
+  enregistré s'applique, et il est coché par défaut (la recette est aussi
+  proposée à la base publique agentvegan.org, publiée après vérification
+  éditoriale). « Garde-la pour moi » donne `share_publicly=false` ;
+  « partage-la » donne `share_publicly=true`.
+- Si l'outil renvoie `PERSONAL_RECIPE_NOT_VEGAN`, `PERSONAL_RECIPE_NOT_FRENCH`
+  ou une autre erreur de validation, corrige le JSON selon `details` et
+  relance une seule fois. Reprends ensuite le `message` renvoyé en une ou deux
+  phrases, sans recopier la recette. Si `planning.issues` n'est pas vide,
+  indique que la recette est enregistrée mais pas encore utilisée par le
+  planificateur, avec la première raison.
+- `INSTAGRAM_LOGIN_REQUIRED` : appelle `connect_instagram` avec
+  `action=connect`. Une fenêtre Instagram dédiée s'ouvre sur la machine ; la
+  personne s'y connecte elle-même. Ne demande jamais d'identifiant, de mot de
+  passe ou de code dans la conversation. Après sa confirmation, vérifie avec
+  `action=status` puis relance l'import. Sur un VPS sans écran, propose
+  `action=import_file` avec le chemin d'un export de cookies Instagram déjà
+  présent sur la machine.
+- `EXECUTOR_OFFLINE` : la machine associée est éteinte ou son service est
+  arrêté ; suis la skill `installer-agentvegan` (mise à jour avec
+  `--update`).
+- `DEVICE_UPDATE_REQUIRED` : le service installé sur la machine est trop
+  ancien ; mets-le à jour avec la skill `installer-agentvegan` (`--update`),
+  puis relance la demande.
+
+### Collection Instagram suivie chaque jour
+
+- « Suis ma collection Instagram », « importe automatiquement ma collection
+  Recettes » ou une adresse instagram.com/<compte>/saved/… : appelle
+  `save_recipe_import_settings` avec `instagram_collection_url`,
+  `collection_check_enabled=true` et, si la personne la donne, l'heure
+  `collection_check_time` (10:00 par défaut). Vérifie ensuite que la session
+  Instagram est connectée (`connect_instagram`, `action=status`).
+- Applique `automations` avec l'outil de tâches planifiées de l'application,
+  comme pour les notifications : `create_or_update` crée ou met à jour la
+  tâche « AgentVegan — collection Instagram » avec son `rrule`, son fuseau et
+  son `prompt` exact ; `delete_if_exists` la supprime. Dans Codex, crée une
+  tâche heartbeat rattachée à la conversation. Sans outil de tâches planifiées,
+  dis-le clairement et donne le `prompt` à lancer à la main. N'annonce jamais
+  qu'une tâche existe avant la confirmation de l'application.
+- « Vérifie ma collection maintenant » ou la tâche planifiée appelle
+  `check_instagram_collection`, puis importe chaque publication de `pending`
+  avec le parcours ci-dessus. Une publication qui n'est pas une recette passe
+  par `skip_instagram_collection_item` avec `status=skipped` ; une erreur
+  d'import avec `status=failed` (elle est retentée au plus trois fois).
+
+### Collection perso, partage et planificateur
+
+- « Mes recettes », « ma collection », « mes recettes Instagram » appelle
+  `list_my_recipes` (avec `query` ou `category` si la personne précise) ;
+  une recette choisie s'affiche avec `get_my_recipe`. La collection vit sur la
+  machine : elle est classée comme le site (catégorie, temps, sans gluten,
+  nutrition par portion).
+- Les recettes perso planifiables entrent automatiquement dans `plan_week`
+  à côté de la base publique. Avec la stratégie de courses « tout chez
+  Picnic », seules les recettes aux produits Picnic certifiés sont planifiées :
+  les recettes perso servent alors en mode hybride ou liste de courses.
+- « Partage cette recette » appelle `share_my_recipe` ; « supprime cette
+  recette » appelle `delete_my_recipe` seulement après une demande explicite.
+- « Ne partage plus mes recettes par défaut » appelle
+  `save_recipe_import_settings` avec `share_publicly_default=false`.
+
+### Sauvegarde PDF dans Google Drive
+
+L'export protège les recettes même si le serveur AgentVegan ou la machine
+disparaissent.
+
+- « Sauvegarde mes recettes dans Google Drive » appelle `connect_google_drive`
+  avec `action=connect`. Donne à la personne l'adresse `login.verification_url`
+  et le code `login.user_code` : elle autorise elle-même AgentVegan, qui ne
+  voit que les fichiers qu'il crée. Après sa confirmation, rappelle
+  `connect_google_drive` avec `action=status`, puis
+  `export_recipes_to_google_drive` pour sauvegarder les recettes déjà
+  présentes. Chaque nouvelle recette est ensuite copiée automatiquement dans
+  le dossier « AgentVegan - Mes recettes ».
+- `get_recipe_import_settings` montre l'état complet : partage par défaut,
+  collection suivie, session Instagram, Google Drive, export en cours et
+  propositions envoyées à agentvegan.org.
+- Sur un ordinateur avec Codex ou Claude Code, le PDF d'une recette est aussi
+  disponible localement : `pdf.local_path` renvoyé par `save_imported_recipe`.
