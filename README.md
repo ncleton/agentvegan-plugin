@@ -64,6 +64,15 @@ et reprend dès qu'elle revient.
 - choisir ses essentiels du quotidien (pain, papier toilette…) et les retrouver
   dans le panier Picnic chaque semaine ou chaque mois, après validation ou
   automatiquement, sans jamais commander ni payer ;
+- importer une recette vue sur Instagram en partageant simplement son lien, ou
+  suivre une collection Instagram enregistrée et y ajouter chaque jour les
+  nouvelles recettes ;
+- garder ces recettes dans une collection perso classée comme sur
+  agentvegan.org (catégorie, temps, sans gluten, nutrition par portion) et les
+  retrouver dans les menus de la semaine ; elles sont aussi proposées à la base
+  publique agentvegan.org, sauf si vous préférez les garder pour vous ;
+- sauvegarder automatiquement chaque recette en PDF dans un dossier Google
+  Drive, pour ne jamais les perdre ;
 - véganiser une recette ou remplacer un ingrédient d'origine animale ;
 - créer une semaine de 21 repas à partir d'un profil alimentaire ;
 - gérer la liste de courses et la compléter chez Picnic ;
@@ -80,9 +89,17 @@ AgentVegan ne commande et ne paie jamais à votre place.
 | Connexion Picnic, recherche des produits, panier | Adresse de connexion des agents (`https://mcp.agentvegan.org/mcp`) |
 | Session Picnic, chiffrée avec une clé propre à la machine | |
 | Modes de décision Laya et Luna | |
+| Import Instagram : téléchargement, transcription audio locale, images | Réglages de la collection perso |
+| Collection perso, PDF et envoi vers Google Drive | Recettes que vous choisissez de proposer à agentvegan.org |
+| Session Instagram dans une fenêtre de navigateur dédiée | |
 
 Votre mot de passe et votre code SMS Picnic ne sont jamais conservés. La
 session Picnic reste sur votre machine.
+
+Votre mot de passe Instagram n'est jamais demandé dans la conversation : vous
+vous connectez vous-même dans une fenêtre dédiée, et seule la session reste sur
+votre machine. Google Drive s'autorise avec un code sur google.com/device, et
+AgentVegan ne voit que les fichiers qu'il crée dans son dossier.
 
 ## Modes de décision
 
