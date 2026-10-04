@@ -62,6 +62,8 @@ un planning certifié par raisonnement libre.
   catalogue à ChatGPT. Il les enregistre immédiatement seulement lorsque tous
   les contrôles passent. Ne jamais composer la semaine dans ChatGPT et ne jamais
   appeler d'abord l'état du compte ou le catalogue.
+  Traduire chaque souhait de la demande dans `preferences` (voir « Souhaits
+  de la semaine ») : sans ce champ, le solveur les ignore.
 
 Le fait que la personne ait sélectionné AgentVegan ou qu'elle le mentionne ne
 constitue pas une demande d'affichage du profil.
@@ -92,6 +94,7 @@ tâche planifiée ou d'une suppression restent distinctes.
 1. Appeler directement `plan_week`, sans appel préalable : ne pas relire ce
    fichier, ne pas chercher d’autres outils et ne pas vérifier Picnic avant.
    `plan_week` détecte lui-même le profil et la connexion Picnic.
+   Transmettre dans `preferences` les souhaits exprimés par la personne.
 2. S'il répond `code: profile_incomplete`, ne rien appeler d'autre : le même
    résultat affiche le wizard afin que la personne complète son profil.
 3. Les besoins nutritionnels non prouvés sont des avertissements informatifs :
@@ -104,9 +107,11 @@ tâche planifiée ou d'une suppression restent distinctes.
    `get_picnic_connection_status` ni `start_picnic_validation` ensuite.
 5. Sous la carte, écrire uniquement la phrase renvoyée par `plan_week`, par
    exemple « Ta semaine est prête. Touche « Ajouter au panier Picnic » en haut de
-   la carte. » Ne pas répéter que la semaine a été calculée, ne pas résumer les
-   repas et ne jamais expliquer la mécanique interne. La programmation de la
-   semaine suivante est proposée dans la carte.
+   la carte. » Quand des souhaits ont été transmis, cette phrase contient aussi
+   leur bilan réel (par exemple « 2 repas sur 21 suivent ta priorité… ») : la
+   reprendre telle quelle. Ne pas répéter que la semaine a été calculée, ne pas
+   résumer les repas et ne jamais expliquer la mécanique interne. La
+   programmation de la semaine suivante est proposée dans la carte.
 6. Si la personne demande à programmer la semaine suivante, recueillir la date,
    l'heure et le rythme. Demander
    seulement les informations manquantes. Une fois les trois connues, créer une
@@ -123,6 +128,36 @@ tâche planifiée ou d'une suppression restent distinctes.
 
 Le quota de repas Flemme enregistré dans le profil est une contrainte exacte du
 solveur. Ne jamais le modifier sans accord.
+
+## Souhaits de la semaine
+
+La personne peut préciser sa semaine dans la même phrase. Chaque souhait se
+transmet dans `preferences` de `plan_week` (et de `preview_week` ou
+`run_scheduled_week` lorsqu'une tâche planifiée contient ces souhaits).
+
+| Demande | `preferences` |
+| --- | --- |
+| « en priorité des recettes Instagram », « surtout des recettes Insta » | `priority_sources: ["instagram"]` |
+| « plutôt des recettes de ma collection » | `priority_sources: ["personal_collection"]` |
+| « que des recettes de ma collection », « uniquement Instagram » | `only_sources: [...]` |
+| « pas de repas Flemme » | `excluded_sources: ["flemme"]` |
+| « plein de tofu », « avec des pois chiches de préférence » | `priority_ingredients: ["tofu"]` |
+| « sans champignons », « pas d'aubergine » | `excluded_ingredients: ["champignons"]` |
+| « des recettes rapides, 30 minutes max » | `max_prep_minutes: 30` |
+
+Origines possibles : `instagram` (Reels et publications Instagram, y compris
+ceux de la collection perso), `personal_collection`, `website` (sites de
+cuisine), `cookbook` (livres), `agentvegan` (recettes maison) et `flemme`.
+
+- « En priorité », « surtout », « plutôt », « de préférence » sont des
+  priorités : le solveur place autant de repas correspondants que la rotation
+  et les contrôles nutritionnels le permettent.
+- « Uniquement », « que des », « sans », « pas de » sont des filtres stricts :
+  les recettes sont retirées avant le calcul. Si `plan_week` répond
+  `PLAN_PREFERENCES_TOO_STRICT`, reprendre son message et proposer de passer le
+  filtre en priorité ; ne jamais relâcher un filtre sans accord.
+- Ne jamais affirmer qu'un souhait est pris en compte sans l'avoir transmis :
+  seul le bilan renvoyé par l'outil fait foi.
 
 ## Produit Picnic indisponible
 
