@@ -32,6 +32,11 @@ résultat AgentVegan par une réponse générale produite de mémoire.
 - « Planifie-moi une semaine végane » appelle immédiatement `plan_week`. Si le
   profil est incomplet, laisser la carte demander uniquement les champs
   nécessaires ; ne pas inventer de semaine dans le texte.
+  Les souhaits de la même phrase passent dans `preferences` : « en priorité
+  des recettes Instagram » donne `priority_sources: ["instagram"]`, « sans
+  champignons » `excluded_ingredients: ["champignons"]`, « 30 minutes max »
+  `max_prep_minutes: 30`. La skill `planifier-agentvegan` détaille toutes les
+  correspondances. Reprendre la phrase renvoyée, qui donne le bilan réel.
 - « Affiche ma liste de courses » appelle immédiatement `get_shopping_list`.
 - « T’as réussi à ajouter au panier tout ce qui est prévu ? », « qu’y a-t-il
   dans mon panier ? » ou « où en sont mes courses ? » appelle immédiatement
@@ -229,6 +234,8 @@ produit son PDF et, si l'export est activé, le copie dans Google Drive.
   à côté de la base publique. Avec la stratégie de courses « tout chez
   Picnic », seules les recettes aux produits Picnic certifiés sont planifiées :
   les recettes perso servent alors en mode hybride ou liste de courses.
+  « Fais ma semaine avec mes recettes en priorité » transmet
+  `preferences.priority_sources: ["personal_collection"]` à `plan_week`.
 - « Partage cette recette » appelle `share_my_recipe` ; « supprime cette
   recette » appelle `delete_my_recipe` seulement après une demande explicite.
 - « Ne partage plus mes recettes par défaut » appelle

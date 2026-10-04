@@ -75,6 +75,11 @@ et reprend dès qu'elle revient.
   Drive, pour ne jamais les perdre ;
 - véganiser une recette ou remplacer un ingrédient d'origine animale ;
 - créer une semaine de 21 repas à partir d'un profil alimentaire ;
+- préciser la semaine dans la même phrase : « en priorité des recettes
+  Instagram », « plein de tofu », « sans champignons », « 30 minutes max » ou
+  « que des recettes de ma collection ». Les priorités sont placées autant que
+  la nutrition le permet, les filtres sont appliqués avant le calcul, et
+  l'agent indique combien de repas respectent réellement la demande ;
 - gérer la liste de courses et la compléter chez Picnic ;
 - prévisualiser le panier Picnic et l'ajouter uniquement après confirmation ;
 - trouver des restaurants et des traiteurs véganes selon une envie.
