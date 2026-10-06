@@ -1,6 +1,6 @@
 ---
 name: utiliser-agentvegan
-description: Utiliser automatiquement les vraies données et cartes AgentVegan quand une personne demande naturellement des idées de recettes véganes, une recette complète, ce qu’elle cuisine aujourd’hui, une recette en PDF, ses notifications ou réglages AgentVegan, ses essentiels du quotidien à ajouter au panier Picnic (pain, papier toilette…), un lien Instagram de recette à importer, sa collection Instagram à suivre, sa collection perso de recettes, le partage d’une recette sur agentvegan.org, la sauvegarde de ses recettes en PDF dans Google Drive, son profil alimentaire, Picnic, une semaine de repas, sa liste de courses, un restaurant végane, un traiteur végane ou l’ajout d’un article. Déclencher même sans mention d’AgentVegan et ne jamais répondre de mémoire quand une action AgentVegan correspond.
+description: Utiliser automatiquement les vraies données et cartes AgentVegan quand une personne demande naturellement des idées de recettes véganes, une recette complète, ce qu’elle cuisine aujourd’hui, une recette en PDF, ses notifications ou réglages AgentVegan, ses essentiels du quotidien à ajouter au panier Picnic (pain, papier toilette…), un lien Instagram de recette à importer, sa collection Instagram à suivre, sa collection perso de recettes, le partage d’une recette sur agentvegan.org, la sauvegarde de ses recettes en PDF dans Google Drive, son profil alimentaire, Picnic, une semaine de repas, sa liste de courses, un restaurant végane, une pâtisserie végane, une boulangerie, un traiteur végane ou l’ajout d’un article. Déclencher même sans mention d’AgentVegan et ne jamais répondre de mémoire quand une action AgentVegan correspond.
 ---
 
 # Utiliser AgentVegan en langage naturel
@@ -65,6 +65,18 @@ résultat AgentVegan par une réponse générale produite de mémoire.
 - « Trouve-moi un restaurant vegan près de moi » appelle immédiatement
   et exactement une fois `find_vegan_locations` avec `category="restaurants"`.
   Utiliser uniquement les établissements renvoyés par la carte réelle AgentVegan.
+- « Je cherche une pâtisserie vegan proche de chez moi » appelle le même outil
+  avec `cuisines=["pastry"]`. « Boulangerie » utilise `cuisines=["bakery"]`,
+  « glaces » `cuisines=["ice_cream"]`. Le produit recherché est un filtre
+  obligatoire, jamais une simple entrée de `preferences` : un restaurant sans
+  pâtisseries ne répond pas à cette demande. Conserver ce filtre pendant les
+  échanges suivants ; « full vegan » ajoute `offers=["only"]`.
+- Ne jamais recommander comme adapté un lieu dont les verdicts disent
+  `a_verifier` ou `inadapte`. Une liste vide signifie qu’aucune adresse du
+  catalogue ne répond aux critères, pas qu’aucune adresse n’existe.
+- Les distances partent de la position partagée quand elle est disponible sur
+  place. Avec `distances_from="area_centre"`, parler de distance depuis le
+  quartier ou le centre indiqué, jamais de distance depuis la personne.
 - Si le message contient une position partagée, par exemple « Ma position
   actuelle (partagée depuis LibreAgent) : latitude …, longitude … », transmettre
   `latitude` et `longitude`, y compris quand un lieu est aussi nommé.
@@ -87,7 +99,7 @@ résultat AgentVegan par une réponse générale produite de mémoire.
   appelle le même outil une seule fois avec la localité dans `query` et chaque
   envie dans `preferences` (une à huit). Le mode de décision du compte (Jev,
   Laya ou Luna) classe alors les adresses les plus proches ; la carte montre le
-  meilleur choix en premier, avec sa photo, sa première description et son
+  meilleur choix vérifié en premier, avec la vue de rue Street View ou Panoramax du site AgentVegan, sa description sourcée et son
   lien Google Maps. Ne jamais transformer une envie en filtre de `query` ni
   réordonner la carte dans le message.
 
