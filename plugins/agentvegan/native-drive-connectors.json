@@ -1,0 +1,41 @@
+{
+  "contract_version": "agentvegan-drive-connectors-v1",
+  "execution": "associated_user_machine",
+  "connectors": [
+    {
+      "id": "leclerc",
+      "label": "E.Leclerc Drive",
+      "kind": "mcp_stdio",
+      "repository": "https://github.com/ncleton/leclerc-drive-mcp",
+      "package": "leclerc-drive-mcp",
+      "revision": "d299bd1771a67a9debfcd64e4a16424525f9be3b",
+      "package_spec": "github:ncleton/leclerc-drive-mcp#d299bd1771a67a9debfcd64e4a16424525f9be3b",
+      "capabilities": [
+        "connect",
+        "session_status",
+        "search_products",
+        "get_product",
+        "get_cart",
+        "add_to_cart",
+        "remove_from_cart"
+      ]
+    },
+    {
+      "id": "carrefour",
+      "label": "Carrefour Drive",
+      "kind": "mcp_stdio",
+      "repository": "https://github.com/ncleton/carrefour-drive-mcp",
+      "package": "carrefour-drive-mcp",
+      "revision": "3c875c22f77c133d8ab36f887d2f4e72964b7b09",
+      "package_spec": "github:ncleton/carrefour-drive-mcp#3c875c22f77c133d8ab36f887d2f4e72964b7b09",
+      "capabilities": [
+        "connect",
+        "session_status",
+        "search_products",
+        "get_product",
+        "get_cart",
+        "add_to_cart"
+      ]
+    }
+  ]
+}

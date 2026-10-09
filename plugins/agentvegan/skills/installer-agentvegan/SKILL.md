@@ -5,7 +5,8 @@ description: Installer AgentVegan de A à Z sur la machine où tourne l'agent (o
 
 # Installer AgentVegan sur cette machine
 
-AgentVegan calcule les menus, se connecte à Picnic et prépare les courses sur
+AgentVegan calcule les menus, connecte Picnic et les Drives Leclerc et Carrefour,
+puis prépare les courses sur
 la machine qui reçoit l'installation. Le serveur AgentVegan conserve seulement
 la base de données du compte. Fais toute l'installation toi-même : la personne
 n'exécute aucune commande et ne copie aucun code.
@@ -70,7 +71,17 @@ personne saisit elle-même son adresse, son mot de passe et le code SMS sur la
 page sécurisée ; la session est ensuite chiffrée sur cette machine. Revérifie
 l'état avec `get_picnic_connection_status` après sa confirmation.
 
-## 5. Terminer
+## 5. Connecter un Drive si la personne le demande
+
+Le service local embarque déjà les deux MCP et Camoufox. Ne demande aucune
+installation séparée. Suis la section « Courses Leclerc et Carrefour » de
+`../utiliser-agentvegan/SKILL.md` : choisis le magasin avec `configure_drive`,
+appelle `connect_leclerc` ou `connect_carrefour`, et laisse la personne terminer
+la connexion dans Camoufox sur cette machine. Revérifie ensuite la session.
+Une installation réussie ne prouve pas une connexion à une enseigne ; une page
+bloquée ou un magasin non vérifié reste une erreur explicite.
+
+## 6. Terminer
 
 Appelle `get_profile`. Si le profil est incomplet, laisse sa carte le faire
 compléter. Annonce ensuite que l'installation est terminée et propose une seule

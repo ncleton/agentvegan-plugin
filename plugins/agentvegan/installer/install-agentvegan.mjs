@@ -18,6 +18,7 @@ import { createHash } from "node:crypto";
 import { chmod, mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { homedir, hostname, platform } from "node:os";
 import { join } from "node:path";
+import expectedDrives from "../native-drive-connectors.json" with { type: "json" };
 
 const SERVER = "https://mcp.agentvegan.org";
 const LOCAL_PAGE = "http://127.0.0.1:43829/";
@@ -95,6 +96,13 @@ async function main() {
   const manifest = await manifestResponse.json().catch(() => ({}));
   if (!manifestResponse.ok || !manifest.version || !/^[0-9a-f]{64}$/u.test(String(manifest.sha256 || ""))) {
     fail(`Paquet du service local indisponible (${manifest.error || manifestResponse.status}).`);
+  }
+  if (manifest.native_drive_connectors?.contract_version !== expectedDrives.contract_version
+      || expectedDrives.connectors.some((expected) => !manifest.native_drive_connectors.connectors?.some((actual) =>
+        actual.id === expected.id && actual.kind === expected.kind
+        && actual.package_spec === expected.package_spec
+        && expected.capabilities.every((capability) => actual.capabilities?.includes(capability))))) {
+    fail("Le service publié n'inclut pas tous les connecteurs Drive annoncés par le plugin. L'opérateur doit publier le paquet AgentVegan correspondant avant de relancer l'installation.");
   }
   const bundle = await api("/api/decision/device/bundle", { token: config.token });
   if (!bundle.ok) fail(`Téléchargement du service local refusé (${bundle.status}).`);

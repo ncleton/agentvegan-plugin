@@ -8,6 +8,35 @@ description: "Afficher ou modifier explicitement le profil AgentVegan, ou calcul
 Exécuter le solveur déterministe fourni. Ne jamais composer, corriger ou déclarer
 un planning certifié par raisonnement libre.
 
+## Courses Leclerc et Carrefour
+
+Les deux connecteurs MCP sont embarqués dans le service local AgentVegan et
+utilisent Camoufox. Ne demande pas d'installer un MCP séparé.
+
+1. Si le magasin manque, demande uniquement le Drive choisi, puis appelle
+   `configure_drive` avec son nom et son identifiant exact ; pour Leclerc,
+   utilise l'URL du catalogue et son code à six chiffres. N'invente pas de magasin.
+2. Appelle `connect_leclerc` ou `connect_carrefour`. Une connexion humaine se
+   termine dans le navigateur de la machine associée. Ne demande jamais de mot
+   de passe, de code ou de cookie dans la conversation. Si la machine est hors
+   ligne ou si le site bloque Camoufox, reprends l'erreur et son action attendue.
+3. Pour la liste de courses, recherche chaque article avec
+   `search_leclerc_products` ou `search_carrefour_products`, puis relis sa fiche
+   avec `get_leclerc_product` ou `get_carrefour_product`. Les ingrédients doivent
+   prouver qu'il convient à la demande végane ; aucun prix ou stock n'est inventé.
+4. Lis `get_leclerc_cart` ou `get_carrefour_cart`, puis prévisualise les ajouts
+   avec `add_to_leclerc_cart` ou `add_to_carrefour_cart`. Présente les produits et
+   quantités réels et attends la confirmation explicite de la personne.
+5. Reprends exactement les paramètres et le `confirmation_token` retournés.
+   Chaque jeton expire et est lié au panier. Carrefour ajoute une unité par
+   confirmation. Une mutation ambiguë exige une relecture, jamais un rejeu.
+6. Pour répondre sur l'avancement des courses, relis le panier réel.
+   Le panier Drive n'est pas le panier Picnic ; ne coche pas des articles comme
+   achetés chez Picnic à partir d'un ajout dans un Drive.
+
+Ne change pas de magasin, de compte ou de navigateur automatiquement. Ne
+choisis pas de créneau, ne valide aucune commande et ne paie jamais.
+
 ## Router la demande
 
 - « Véganise cette recette », « rends ce plat vegan » ou toute transformation
