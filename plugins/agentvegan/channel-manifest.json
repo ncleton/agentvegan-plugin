@@ -5,11 +5,11 @@
   "files": [
     {
       "path": ".claude-plugin/plugin.json",
-      "sha256": "3046391e9b5394eddcd563ca92a86995ad393572eccbb725f7d20090865e2946"
+      "sha256": "3320692875fa755577389cabb961c414889d427794d6015c36ba9d70fab45a3e"
     },
     {
       "path": ".codex-plugin/plugin.json",
-      "sha256": "e8fa9cface842075a0eee44e4a4abcc620198b206e8103b7e0684c08e8349e70"
+      "sha256": "702acb86521da79d7d05ba1d3ab2bd79817bd2e006f94a5d861edc559095a298"
     },
     {
       "path": ".mcp.json",
@@ -21,11 +21,11 @@
     },
     {
       "path": "assets/public-recipe-catalog.json",
-      "sha256": "ee30090809dd44578ba4ddc3351e6b47f6813883fd6a62f290aecd310bc76b30"
+      "sha256": "3f4c160969434de6be2e563e581e37e1bf9a5d788a8af9910ea34f0b96cf4992"
     },
     {
       "path": "assets/public-recipe-details.json",
-      "sha256": "bc171bfac6f6f51a9f625607c60999489adceb0694932b963c2949ea60acff60"
+      "sha256": "edf8f4ccfedb8e416c30b8e3ca9ac81e89bc1355fe5f039d2c8ffe64dfffe7e1"
     },
     {
       "path": "installer/install-agentvegan.mjs",
@@ -41,11 +41,11 @@
     },
     {
       "path": "skills/planifier-agentvegan/SKILL.md",
-      "sha256": "40b56ad65fa7a87272f9502a249727f73974fdae0fc3adfe9adc8f609cb8bc1b"
+      "sha256": "896da0d7b7fd1a66ce3505052e8e1f7ae9143fb7759a37f1539f00884b312ff4"
     },
     {
       "path": "skills/planifier-agentvegan/agents/openai.yaml",
-      "sha256": "20ff035092d783e0a72fcfafd35fbabde13a361cc9c0b598149144da7ba73624"
+      "sha256": "4d53236ff1f1ef4ba780cae88bed0785a2b6ac8a572ae5466b97cedd4d124013"
     },
     {
       "path": "skills/planifier-agentvegan/references/contracts.md",
@@ -69,7 +69,7 @@
     },
     {
       "path": "skills/utiliser-agentvegan/SKILL.md",
-      "sha256": "8ef9a8cc4db0b3cf8c55ea3d0814bc715c5e130dbc441933666e17a41588ea0f"
+      "sha256": "2350eb51b44830da1bc1e92b77c42cf2c24b7b91c133ac60b50f23f609406a68"
     },
     {
       "path": "skills/utiliser-agentvegan/agents/openai.yaml",

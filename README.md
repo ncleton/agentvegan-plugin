@@ -88,6 +88,9 @@ et reprend dès qu'elle revient.
   la nutrition le permet, les filtres sont appliqués avant le calcul, et
   l'agent indique combien de repas respectent réellement la demande ;
 - gérer la liste de courses et la compléter chez Picnic, Leclerc Drive ou Carrefour Drive ;
+- faire toutes les courses dans un Drive Leclerc ou Carrefour, papier toilette et
+  produits d'entretien compris : un seul récapitulatif à valider, puis des
+  ajouts contrôlés par la relecture du panier réel ;
 - connecter un Drive Leclerc ou Carrefour dans le navigateur de la machine associée, puis lire son catalogue et son panier ;
 - prévisualiser le panier Picnic et l'ajouter uniquement après confirmation ;
 - trouver des restaurants et des traiteurs véganes selon une envie.
