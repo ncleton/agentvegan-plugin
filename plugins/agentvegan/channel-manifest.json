@@ -5,11 +5,11 @@
   "files": [
     {
       "path": ".claude-plugin/plugin.json",
-      "sha256": "3046391e9b5394eddcd563ca92a86995ad393572eccbb725f7d20090865e2946"
+      "sha256": "edbb863b861ae71b900399917efa43294c536b4476de8512fcc8ea03f3954e9e"
     },
     {
       "path": ".codex-plugin/plugin.json",
-      "sha256": "e8fa9cface842075a0eee44e4a4abcc620198b206e8103b7e0684c08e8349e70"
+      "sha256": "2bed2ac9fdbf7c9a3c380aa5c036c050475fc45bc0f4e24118d5fbb8b75b3535"
     },
     {
       "path": ".mcp.json",
@@ -29,7 +29,11 @@
     },
     {
       "path": "installer/install-agentvegan.mjs",
-      "sha256": "857bf2078ade8d3cc8b040c6fef64492c18f83c77041028b51b2302deb59b4bc"
+      "sha256": "83735ed62abcb63c13edb7f2153f786786d4ade67b328c5c99de8e20cceb44c0"
+    },
+    {
+      "path": "native-drive-connectors.json",
+      "sha256": "dc1b3b1a45653bd8b34bf0e24559fe6a8c4eaeb2d77cf1b9689c3f49924bc612"
     },
     {
       "path": "skills/installer-agentvegan/SKILL.md",
@@ -65,7 +69,7 @@
     },
     {
       "path": "skills/utiliser-agentvegan/SKILL.md",
-      "sha256": "c2fcf51ee80456e23bfe6b2ebae93d9f3fbb2f88181183062e7d62d6e2d9e578"
+      "sha256": "3e019910ccd5541212ead478215d7faa6e837d8dfb5be25c1e89aa7b7f5f7064"
     },
     {
       "path": "skills/utiliser-agentvegan/agents/openai.yaml",

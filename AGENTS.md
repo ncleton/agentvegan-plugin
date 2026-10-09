@@ -54,3 +54,5 @@ ou une adresse précise. Une demande d’établissement n’est jamais une quest
 - Garder tous les textes destinés aux utilisateurs en français naturel.
 - Valider le plugin et les manifestes des catalogues avant chaque publication.
 
+
+- Pour Auchan et Supermarchés Match, appelle `connect_auchan` ou `connect_match`, puis configure le magasin réel s’il manque. `get_drive_connectors` donne les capacités exactes. Auchan expose une lecture de fiche, Match une recherche du catalogue ; aucun panier pour ces deux enseignes. Ne confonds pas leur pause dans le classement public avec l’absence de leurs lecteurs personnels.
