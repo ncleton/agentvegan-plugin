@@ -115,7 +115,7 @@ async function main() {
   for (let attempt = 0; attempt < 90 && !connected; attempt += 1) {
     try {
       const page = await (await fetch(LOCAL_PAGE, { signal: AbortSignal.timeout(3000) })).text();
-      connected = page.includes("Connecté : Picnic est exécuté sur cette machine.");
+      connected = page.includes("Connecté : les courses sont exécutées sur cette machine.");
     } catch { /* démarrage en cours */ }
     if (!connected) await new Promise((done) => setTimeout(done, 1000));
   }

@@ -1,7 +1,7 @@
 {
   "name": "agentvegan",
-  "version": "1.0.15",
-  "description": "Recettes, substituts véganes, planification, courses Picnic et adresses véganes, exécutés sur votre ordinateur ou votre VPS.",
+  "version": "1.0.16",
+  "description": "Recettes, substituts véganes, planification, courses Picnic, Leclerc Drive et Carrefour Drive et adresses véganes, exécutés sur votre ordinateur ou votre VPS.",
   "author": {
     "name": "Nicolas Cléton"
   },
@@ -16,14 +16,17 @@
     "picnic",
     "planning",
     "restaurants",
-    "traiteurs"
+    "traiteurs",
+    "leclerc",
+    "carrefour",
+    "camoufox"
   ],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "AgentVegan",
     "shortDescription": "Recettes, courses et adresses véganes",
-    "longDescription": "Transforme une recette traditionnelle en version végane, cherche les recettes publiées, calcule une semaine selon un profil consenti, trouve des restaurants et traiteurs véganes, et prépare les courses avec Picnic après confirmation.",
+    "longDescription": "Transforme une recette traditionnelle en version végane, cherche les recettes publiées, calcule une semaine selon un profil consenti, trouve des restaurants et traiteurs véganes, et prépare les paniers Picnic, Leclerc Drive et Carrefour Drive après confirmation.",
     "developerName": "Nicolas Cléton",
     "category": "Lifestyle",
     "capabilities": [

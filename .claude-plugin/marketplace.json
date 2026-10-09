@@ -7,7 +7,7 @@
     {
       "name": "agentvegan",
       "source": "./plugins/agentvegan",
-      "description": "Recettes, menus, courses Picnic et adresses véganes, exécutés sur votre ordinateur ou votre VPS."
+      "description": "Recettes, menus, courses Picnic, Leclerc Drive et Carrefour Drive et adresses véganes, exécutés sur votre ordinateur ou votre VPS."
     }
   ],
   "metadata": {

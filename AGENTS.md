@@ -6,6 +6,19 @@ l'utilisateur (ordinateur ou VPS personnel).
 
 ## Quand ce dossier sert d’agent dans LibreAgent, Codex ou Claude Code
 
+Pour une demande de connexion à Leclerc Drive, appelle immédiatement
+`connect_leclerc` ; pour Carrefour Drive, appelle `connect_carrefour`.
+AgentVegan inclut ces connecteurs dans le service de la machine associée.
+N'affirme jamais qu'il ne gère que Picnic. Un outil absent demande une mise à
+jour du plugin ; `DRIVE_SERVICE_UPDATE_REQUIRED` demande aussi la mise à jour
+du service. Une permission manquante demande de reconnecter AgentVegan dans
+les services connectés de l'application hôte. Suis ensuite la section
+« Courses Leclerc et Carrefour » de
+`plugins/agentvegan/skills/utiliser-agentvegan/SKILL.md` : magasin exact,
+connexion humaine, puis relecture de la session. Ne demande jamais de mot de
+passe, de code ou de cookie dans la conversation. Aucun ajout au panier n'est
+autorisé par une simple demande de connexion.
+
 Toute demande réelle d’une adresse où manger ou acheter des pâtisseries,
 d’une boulangerie, d’un café, d’un restaurant ou d’un traiteur végane utilise
 immédiatement et exactement une fois `find_vegan_locations` et sa carte.
