@@ -36,30 +36,6 @@
         "get_cart",
         "add_to_cart"
       ]
-    },
-    {
-      "id": "auchan",
-      "label": "Auchan Drive",
-      "kind": "local_catalogue",
-      "website": "https://www.auchan.fr",
-      "capabilities": [
-        "connect",
-        "catalogue_status",
-        "get_product"
-      ],
-      "collector": "browser-product-details-v1"
-    },
-    {
-      "id": "match",
-      "label": "Supermarchés Match",
-      "kind": "local_catalogue",
-      "website": "https://www.supermarchesmatch.fr",
-      "capabilities": [
-        "connect",
-        "catalogue_status",
-        "search_products"
-      ],
-      "collector": "supermarches-match-target-search-v1"
     }
   ]
 }

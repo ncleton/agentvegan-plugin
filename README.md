@@ -5,7 +5,7 @@
 <h1 align="center">AgentVegan</h1>
 
 <p align="center">
-  Recettes véganes, menus de la semaine, courses Picnic, Leclerc et Carrefour, catalogues Auchan et Match, restaurants et traiteurs véganes, avec Codex, Claude Code ou LibreAgent.
+  Recettes véganes, menus de la semaine, courses Picnic, Leclerc Drive et Carrefour Drive, restaurants et traiteurs véganes, avec Codex, Claude Code ou LibreAgent.
 </p>
 
 AgentVegan s'installe sur **votre** machine : votre ordinateur, ou votre propre
@@ -97,23 +97,22 @@ ajouter manuellement à Codex, Claude Code ou LibreAgent.
 |---|---|---|
 | E.Leclerc Drive | [Dépôt MCP Leclerc](https://github.com/ncleton/leclerc-drive-mcp) | Connexion, recherche, fiche produit, lecture et modification confirmée du panier |
 | Carrefour Drive | [Dépôt MCP Carrefour](https://github.com/ncleton/carrefour-drive-mcp) | Connexion, recherche, fiche produit, lecture et ajout confirmé au panier |
-| Auchan Drive | Collecteur AgentVegan embarqué | Ouverture, vérification du magasin, lecture d’une fiche officielle |
-| Supermarchés Match | Collecteur AgentVegan embarqué | Ouverture, vérification du magasin, recherche de produits et ingrédients |
 
 Les dépôts MCP et leurs versions sont liés dans
 [native-drive-connectors.json](plugins/agentvegan/native-drive-connectors.json).
 Ce manifeste pilote les dépendances réellement installées. L’installateur
 vérifie que le service distribué inclut toutes les capacités annoncées.
-Auchan et Match n’ont pas de dépôt MCP séparé dans les sources retrouvées ;
-leurs lecteurs existants sont raccordés aux outils du plugin.
+Les MCP d’achats Auchan et Supermarchés Match ne font pas partie de cette
+livraison : les sources AgentVegan contiennent des collecteurs de catalogue
+pour ces enseignes, sans outils MCP de panier.
 
-Demandez par exemple « Connecte Leclerc Drive », « Connecte Carrefour »,
-« Ouvre mon catalogue Auchan » ou « Cherche du tofu chez Match ».
+Demandez par exemple « Connecte Leclerc Drive », « Connecte Carrefour » ou
+« Prépare mon panier chez Leclerc ».
 Chaque personne choisit son magasin exact et utilise son propre profil de
 navigateur sur sa machine associée. Elle termine elle-même toute connexion ou
 étape humaine sur le site officiel. Aucun compte ni choix de magasin n’est
-partagé entre utilisateurs. Un catalogue prêt confirme son magasin ; il ne
-prouve pas qu’un compte marchand est authentifié.
+partagé entre utilisateurs. L’agent vérifie la session et le magasin réellement sélectionnés avant les
+lectures et modifications du panier.
 
 Pour une installation existante, demandez « Mets à jour AgentVegan sur ma
 machine associée », puis reconnectez AgentVegan dans les services connectés
@@ -125,7 +124,7 @@ si les nouvelles autorisations Drive sont demandées. Le plugin conserve
 | Sur votre machine | Sur le serveur AgentVegan |
 |---|---|
 | Calcul des menus | Base de données du compte (profil, menus, listes) |
-| Connecteurs Picnic, Leclerc, Carrefour, Auchan et Match | Adresse de connexion des agents (`https://mcp.agentvegan.org/mcp`) |
+| Connecteurs Picnic, Leclerc Drive et Carrefour Drive | Adresse de connexion des agents (`https://mcp.agentvegan.org/mcp`) |
 | Session Picnic, chiffrée avec une clé propre à la machine | |
 | Modes de décision Laya et Luna | |
 | Import Instagram : téléchargement, transcription audio locale, images | Réglages de la collection perso |

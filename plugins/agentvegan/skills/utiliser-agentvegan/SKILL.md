@@ -307,10 +307,8 @@ disparaissent.
 - Sur un ordinateur avec Codex ou Claude Code, le PDF d'une recette est aussi
   disponible localement : `pdf.local_path` renvoyé par `save_imported_recipe`.
 
-## Connecteurs livrés avec le plugin
+## MCP d’achats livrés avec le plugin
 
-`get_drive_connectors` donne l’inventaire exact. Leclerc et Carrefour utilisent les MCP publics épinglés dans `native-drive-connectors.json` et installés avec le service associé. Auchan et Supermarchés Match réutilisent les lecteurs de catalogue AgentVegan, chacun dans le profil privé du compte.
+`get_drive_connectors` donne l’inventaire exact. Les dépôts Leclerc et Carrefour sont liés dans `native-drive-connectors.json`, qui pilote leurs versions réellement installées avec le service associé. Les deux MCP permettent de chercher les produits et de modifier le panier après confirmation explicite ; l’agent n’effectue aucune commande ni aucun paiement.
 
-Pour « connecte Auchan » ou « connecte Match », appelle immédiatement `connect_auchan` ou `connect_match`. Si le magasin manque, utilise `configure_drive` avec les valeurs réelles choisies par la personne : Auchan exige `store_name`, `store_url` et `seller_id` ; Match exige `store_name`, `store_url`, `store_id` et `site_code`. Vérifie ensuite avec `catalogue_status_auchan` ou `catalogue_status_match`.
-
-Auchan expose `get_auchan_product` pour une URL officielle ; Match expose `search_match_products`. N’annonce pas de session authentifiée à partir de `catalogue_ready` : cet état confirme seulement le magasin du catalogue. Aucun outil de panier n’est livré pour ces deux enseignes. Leur absence du classement public ne retire pas ces lectures personnelles. Ne réponds jamais « seulement Picnic » sans lire l’inventaire réel.
+Auchan et Supermarchés Match avaient des collecteurs de catalogue dans AgentVegan, sans MCP de panier retrouvé. N’annonce pas de MCP d’achats pour ces enseignes à partir de ces collecteurs. Ne réponds jamais « seulement Picnic » sans vérifier l’inventaire réel des MCP.

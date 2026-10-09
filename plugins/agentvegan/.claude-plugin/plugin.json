@@ -1,7 +1,7 @@
 {
   "name": "agentvegan",
   "version": "1.0.16",
-  "description": "Recettes, substituts véganes, planification, courses Picnic, Leclerc et Carrefour, catalogues Auchan et Match, et adresses véganes sur votre ordinateur ou VPS.",
+  "description": "Recettes, substituts véganes, planification, courses Picnic, Leclerc Drive et Carrefour Drive et adresses véganes, exécutés sur votre ordinateur ou votre VPS.",
   "author": {
     "name": "Nicolas Cléton"
   },
@@ -15,8 +15,6 @@
     "planning",
     "leclerc",
     "carrefour",
-    "camoufox",
-    "auchan",
-    "match"
+    "camoufox"
   ]
 }
