@@ -29,7 +29,7 @@
     },
     {
       "path": "installer/install-agentvegan.mjs",
-      "sha256": "05e36a077a318e5944362ab1cc275949b2bbb4e13cbe167da68907c8836783d2"
+      "sha256": "857bf2078ade8d3cc8b040c6fef64492c18f83c77041028b51b2302deb59b4bc"
     },
     {
       "path": "skills/installer-agentvegan/SKILL.md",
