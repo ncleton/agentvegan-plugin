@@ -1,6 +1,6 @@
 ---
 name: utiliser-agentvegan
-description: Utiliser automatiquement les vraies données et cartes AgentVegan quand une personne demande naturellement des idées de recettes véganes, une recette complète, ce qu’elle cuisine aujourd’hui, une recette en PDF, ses notifications ou réglages AgentVegan, ses essentiels du quotidien à ajouter au panier Picnic (pain, papier toilette…), un lien Instagram de recette à importer, sa collection Instagram à suivre, sa collection perso de recettes, le partage d’une recette sur agentvegan.org, la sauvegarde de ses recettes en PDF dans Google Drive, son profil alimentaire, Picnic, Leclerc Drive, Carrefour Drive, une semaine de repas, sa liste de courses, un restaurant végane, une pâtisserie végane, une boulangerie, un traiteur végane ou l’ajout d’un article. Déclencher même sans mention d’AgentVegan et ne jamais répondre de mémoire quand une action AgentVegan correspond.
+description: Utiliser automatiquement les vraies données et cartes AgentVegan quand une personne demande naturellement des idées de recettes véganes, une recette complète, ce qu’elle cuisine aujourd’hui, une recette en PDF, ses notifications ou réglages AgentVegan, ses essentiels du quotidien à ajouter au panier Picnic, Leclerc Drive ou Carrefour Drive (pain, papier toilette…), ses courses complètes dans un Drive, un lien Instagram de recette à importer, sa collection Instagram à suivre, sa collection perso de recettes, le partage d’une recette sur agentvegan.org, la sauvegarde de ses recettes en PDF dans Google Drive, son profil alimentaire, Picnic, Leclerc Drive, Carrefour Drive, une semaine de repas, sa liste de courses, un restaurant végane, une pâtisserie végane, une boulangerie, un traiteur végane ou l’ajout d’un article. Déclencher même sans mention d’AgentVegan et ne jamais répondre de mémoire quand une action AgentVegan correspond.
 ---
 
 # Utiliser AgentVegan en langage naturel
@@ -29,8 +29,10 @@ utilisent Camoufox. Ne demande pas d'installer un MCP séparé.
    ligne ou si le site bloque Camoufox, reprends l'erreur et son action attendue.
 3. Pour la liste de courses, recherche chaque article avec
    `search_leclerc_products` ou `search_carrefour_products`, puis relis sa fiche
-   avec `get_leclerc_product` ou `get_carrefour_product`. Les ingrédients doivent
-   prouver qu'il convient à la demande végane ; aucun prix ou stock n'est inventé.
+   avec `get_leclerc_product` ou `get_carrefour_product`. Pour un aliment ou une
+   boisson, les ingrédients doivent prouver qu'il convient à la demande végane.
+   Un article non alimentaire n'a pas de preuve végane à fournir. Aucun prix ou
+   stock n'est inventé.
 4. Lis `get_leclerc_cart` ou `get_carrefour_cart`, puis prévisualise les ajouts
    avec `add_to_leclerc_cart` ou `add_to_carrefour_cart`. Présente les produits et
    quantités réels et attends la confirmation explicite de la personne.
@@ -40,6 +42,32 @@ utilisent Camoufox. Ne demande pas d'installer un MCP séparé.
 6. Pour répondre sur l'avancement des courses, relis le panier réel.
    Le panier Drive n'est pas le panier Picnic ; ne coche pas des articles comme
    achetés chez Picnic à partir d'un ajout dans un Drive.
+
+### Faire toutes les courses, papier toilette compris
+
+Quand la personne demande un article du quotidien (« du papier toilette », de
+la lessive, du café) ou de « faire toutes les courses », le Drive choisi sert
+de magasin complet. Ne limite pas la recherche aux produits alimentaires
+véganes et ne réponds jamais qu'un article est hors du champ d'AgentVegan.
+
+- Non alimentaire (papier toilette, produits ménagers, hygiène) : aucune preuve
+  végane n'est exigée. Retiens la référence qui correspond exactement à la
+  demande (format, nombre de rouleaux, marque si elle est précisée). Si
+  plusieurs références conviennent, propose-en trois au plus et demande
+  laquelle.
+- Aliments et boissons : garde la preuve végane lue sur la fiche. Si la fiche ne
+  la donne pas, dis-le et n'ajoute l'article qu'avec l'accord explicite de la
+  personne.
+- Une liste complète (liste de la semaine, liste libre ou les deux) se traite en
+  une passe : recherche chaque ligne, puis présente un seul récapitulatif avec
+  l'article, la référence retenue, la quantité, le prix observé et les lignes
+  sans référence fiable. Après une confirmation explicite de ce récapitulatif,
+  applique chaque ajout avec son `confirmation_token`, relis le panier réel tous
+  les cinq ajouts et à la fin, puis donne l'écart entre la liste et le panier.
+  Si un ajout échoue ou reste ambigu, arrête-toi, relis le panier et rends
+  compte avant de continuer.
+- Ne mélange pas Leclerc et Carrefour dans un même récapitulatif sans que la
+  personne ait choisi l'enseigne de chaque ligne.
 
 Ne change pas de magasin, de compte ou de navigateur automatiquement. Ne
 choisis pas de créneau, ne valide aucune commande et ne paie jamais.
@@ -64,7 +92,12 @@ choisis pas de créneau, ne valide aucune commande et ne paie jamais.
   saisit elle-même ses identifiants et son code éventuel sur cette page.
   Si AgentVegan demande les autorisations Picnic, faire ouvrir le consentement
   par l'application hôte et ne jamais demander une commande de terminal.
-- « Planifie-moi une semaine végane » appelle immédiatement `plan_week`. Si le
+- Une demande de repas partiels, batch cooking, congélation, céréales déjà
+  choisies ou nombre variable de repas appelle `prepare_meal_plan` avec la
+  demande complète et suit la section « Respecter la demande de repas avant
+  tout calcul » de `planifier-agentvegan`. Ne jamais appeler `plan_week` vide
+  pour ces demandes.
+- « Planifie-moi une semaine végane » sans autre contrainte de structure appelle `plan_week` avec `request_text`. Si le
   profil est incomplet, laisser la carte demander uniquement les champs
   nécessaires ; ne pas inventer de semaine dans le texte.
   Les souhaits de la même phrase passent dans `preferences` : « en priorité
@@ -312,3 +345,17 @@ disparaissent.
 `get_drive_connectors` donne l’inventaire exact. Les dépôts Leclerc et Carrefour sont liés dans `native-drive-connectors.json`, qui pilote leurs versions réellement installées avec le service associé. Les deux MCP permettent de chercher les produits et de modifier le panier après confirmation explicite ; l’agent n’effectue aucune commande ni aucun paiement.
 
 Auchan et Supermarchés Match avaient des collecteurs de catalogue dans AgentVegan, sans MCP de panier retrouvé. N’annonce pas de MCP d’achats pour ces enseignes à partir de ces collecteurs. Ne réponds jamais « seulement Picnic » sans vérifier l’inventaire réel des MCP.
+
+
+### Recettes sur mesure et partage
+
+Pour des repas dont le catalogue ne respecte pas les contraintes, suivre
+`planifier-agentvegan` : catalogue actuel d'abord, autorisation explicite avant
+`create_custom_recipe`, produits vérifiés chez le marchand choisi, plat et
+chaque étape illustrés, puis `save_meal_plan` avec les seuls créneaux demandés.
+`get_meal_plan` retrouve ce programme sans générer une semaine standard.
+La création laisse la recette privée. Le partage est un choix distinct :
+anonyme ou pseudo public lié au compte, photo facultative, et autorisation de
+publication de la recette. Ne jamais copier le nom ou l'email du compte dans
+l'attribution. La fiche « Partager sur le site » recueille ce choix avant la
+proposition pour validation.

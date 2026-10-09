@@ -9,8 +9,9 @@
 </p>
 
 AgentVegan s'installe sur **votre** machine : votre ordinateur, ou votre propre
-VPS. C’est elle qui calcule vos menus, exécute les connecteurs marchands et prépare vos courses. Le serveur AgentVegan ne garde que votre base de données (profil,
-menus, listes).
+VPS. C’est elle qui calcule vos menus, exécute les connecteurs marchands et prépare vos courses. Le serveur AgentVegan conserve votre espace privé : profil, menus, listes,
+recettes et photos. Une recette ne devient publique qu’après votre autorisation
+et sa validation.
 
 ## Installation
 
@@ -73,7 +74,14 @@ et reprend dès qu'elle revient.
 - sauvegarder automatiquement chaque recette en PDF dans un dossier Google
   Drive, pour ne jamais les perdre ;
 - véganiser une recette ou remplacer un ingrédient d'origine animale ;
-- créer une semaine de 21 repas à partir d'un profil alimentaire ;
+- organiser les repas demandés : dîners seuls, déjeuners au travail, portions
+  à congeler ou semaine complète, en conservant les aliments déjà choisis ;
+- utiliser les recettes du site en priorité et créer une recette sur mesure
+  avec votre accord lorsqu’elles ne conviennent pas ;
+- proposer une nouvelle recette au partage après votre autorisation explicite :
+  anonymement ou avec un pseudo choisi, et une photo de profil facultative.
+  La recette reste privée pendant la validation AgentVegan ;
+- calculer aussi une semaine de 21 repas à partir d'un profil alimentaire ;
 - préciser la semaine dans la même phrase : « en priorité des recettes
   Instagram », « plein de tofu », « sans champignons », « 30 minutes max » ou
   « que des recettes de ma collection ». Les priorités sont placées autant que

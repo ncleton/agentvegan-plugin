@@ -1,6 +1,6 @@
 {
   "name": "agentvegan",
-  "version": "1.0.16",
+  "version": "1.0.18",
   "description": "Recettes, substituts véganes, planification, courses Picnic, Leclerc Drive et Carrefour Drive et adresses véganes, exécutés sur votre ordinateur ou votre VPS.",
   "author": {
     "name": "Nicolas Cléton"
@@ -26,7 +26,7 @@
   "interface": {
     "displayName": "AgentVegan",
     "shortDescription": "Recettes, courses et adresses véganes",
-    "longDescription": "Transforme une recette traditionnelle en version végane, cherche les recettes publiées, calcule une semaine selon un profil consenti, trouve des restaurants et traiteurs véganes, et prépare les paniers Picnic, Leclerc Drive et Carrefour Drive après confirmation.",
+    "longDescription": "Organise les repas réellement demandés à partir des recettes du site, conserve les aliments déjà choisis et les portions de batch cooking, puis crée des recettes sur mesure avec votre accord. Chaque recette complète peut être proposée au partage, uniquement avec votre autorisation, en anonyme ou avec votre pseudo et une photo facultative. Propose aussi la véganisation, les substituts, les adresses véganes et les courses Picnic, Leclerc Drive et Carrefour Drive après confirmation.",
     "developerName": "Nicolas Cléton",
     "category": "Lifestyle",
     "capabilities": [

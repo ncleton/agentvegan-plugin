@@ -1,12 +1,12 @@
 interface:
   display_name: "Planifier avec AgentVegan"
-  short_description: "Calcule une semaine végane certifiée"
-  default_prompt: "Utilise $planifier-agentvegan pour ouvrir AgentVegan et me guider dans le profil puis la connexion Picnic."
+  short_description: "Organise mes repas selon mes contraintes"
+  default_prompt: "Utilise $planifier-agentvegan pour organiser les repas que je demande, avec les recettes du site en priorité et des recettes sur mesure si je les autorise."
 dependencies:
   tools:
     - type: "mcp"
       value: "agentvegan"
-      description: "Profil, contexte certifié, compte Picnic et panier AgentVegan"
+      description: "Profil, repas flexibles, recettes sur mesure et courses AgentVegan"
       transport: "streamable_http"
       url: "https://mcp.agentvegan.org/mcp"
 policy:

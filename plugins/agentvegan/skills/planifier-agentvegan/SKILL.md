@@ -1,6 +1,6 @@
 ---
 name: planifier-agentvegan
-description: "Afficher ou modifier explicitement le profil AgentVegan, ou calculer et certifier une semaine complète de 7 jours et 21 repas véganes. Utiliser seulement pour le profil, une semaine ou un menu hebdomadaire explicites, une liste de courses liée à cette semaine ou un panier Picnic. Ne jamais utiliser pour un plat unique nommé : bœuf bourguignon, raclette, risotto ou tartiflette utilisent le véganiseur."
+description: "Afficher ou modifier le profil AgentVegan, préparer les repas réellement demandés (menus partiels, batch cooking, aliments fixes, en-cas) ou calculer une semaine complète explicitement demandée. Utiliser seulement pour le profil, une semaine ou un menu hebdomadaire explicites, une liste de courses liée à cette semaine ou un panier Picnic. Ne jamais utiliser pour un plat unique nommé : bœuf bourguignon, raclette, risotto ou tartiflette utilisent le véganiseur."
 ---
 
 # Planifier avec AgentVegan
@@ -36,6 +36,90 @@ utilisent Camoufox. Ne demande pas d'installer un MCP séparé.
 
 Ne change pas de magasin, de compte ou de navigateur automatiquement. Ne
 choisis pas de créneau, ne valide aucune commande et ne paie jamais.
+
+## Respecter la demande de repas avant tout calcul
+
+Cette section prend priorité sur le parcours de semaine standard ci-dessous.
+Conserver les contraintes des messages précédents jusqu'à ce que la personne
+les modifie explicitement. Une préférence du profil ne remplace jamais son
+choix dans la conversation.
+
+- Dîners seulement, cinq midis au travail, batch cooking, congélation, aliments
+  déjà choisis au matin, en-cas ou nombre variable de repas : appeler
+  `prepare_meal_plan`, jamais `plan_week` sans transmettre ces contraintes.
+- Dans `meal_request.request_text`, transmettre la demande complète. Dans
+  `slots`, mettre uniquement les créneaux demandés, avec jour, repas, nombre
+  de portions et identifiant unique. Un aliment déjà choisi utilise
+  `kind="fixed_food"` et `food` avec son nom exact, son lien et seulement la
+  quantité donnée. Ne jamais remplacer des céréales KoRo par une recette de
+  bol de céréales du catalogue ; ne pas inventer leur portion ou leurs apports.
+- Un lot de batch cooking utilise `batches` avec `batch_id` et `storage`.
+  Relier chaque créneau concerné avec le même `batch_id`. « Cinq midis au
+  travail » désigne cinq créneaux, pas cinq plats différents. La congélation
+  est `storage="freezer"`, jamais une simple priorité culinaire.
+- Transmettre la place de marché sélectionnée dans `marketplace` avec son
+  magasin exact s'il est connu. Si elle manque, la retrouver dans le compte
+  ou demander seulement ce choix. Ne jamais choisir Picnic à sa place.
+- Toute exigence sans champ dédié reste dans `remaining_constraints` et doit
+  être traitée avant la sauvegarde. Ne pas annoncer qu'elle est respectée.
+- Le résultat `meal_planning_context` est une préparation en lecture seule :
+  `saved=false`. Reprendre son état réel et son `next_action`. Ce n'est pas un
+  programme terminé ni une certification nutritionnelle de journées complètes.
+- Si `creation.status="permission_required"`, reprendre `creation.question`
+  et attendre l'accord explicite avant de créer ou d'adapter les recettes
+  manquantes. Un catalogue sans preuve de congélation ne prouve pas qu'aucun
+  plat congelable n'existe. Ne jamais imposer un autre repas ou relâcher les
+  contraintes. Après l'accord, chaque nouvelle recette exige quantités,
+  ingrédients vérifiés chez le marchand choisi, toutes les étapes, une photo
+  du plat et une photo distincte par étape ; les lots exigent aussi leur
+  conservation, décongélation et réchauffage vérifiés.
+- Un ingrédient n'est disponible que lorsque la vraie fiche du marchand choisi
+  le confirme. Une référence du site ou une photo ne constitue pas une preuve
+  de disponibilité. Une erreur de session, de magasin ou de vérification reste
+  visible et bloque la déclaration « prêt ».
+
+Pour une semaine complète standard, transmettre aussi la demande exacte dans
+`request_text` de `plan_week`, en plus des préférences. Ne jamais annoncer
+avant l'appel que des contraintes sont prises en compte : vérifier le résultat.
+
+## Terminer un programme flexible
+
+`prepare_meal_plan` renvoie `planning_token` : conserver sa valeur exacte.
+Après l'autorisation explicite de créer ou adapter les recettes manquantes,
+appeler `create_custom_recipe` avec ce jeton, `creation_consent=true`, les
+`slot_ids` concernés et la recette complète dans `recipe_json`. Privilégier une
+adaptation du site avec `base_recipe_id`. Respecter le contrat d'illustration
+renvoyé par l'outil et ses instructions pour chaque photo ; ne pas créer une
+recette du catalogue à la place d'un aliment déjà choisi. Le produit est vérifié
+par le connecteur du marchand choisi : une erreur doit être résolue, jamais
+présentée comme une disponibilité ou une rupture.
+
+Une recette sur mesure reste privée. Toutes ses illustrations doivent être
+rattachées avant d'appeler `save_meal_plan`. Envoyer exactement une sélection
+`slot_id` / `recipe_id` par créneau à cuisiner, aucune pour les aliments fixés.
+Reprendre chaque contrainte restante dans `constraint_resolutions` avec son
+traitement explicite. L'outil regroupe les portions des lots et revérifie les
+produits avant l'enregistrement. Présenter la carte retournée et son message,
+sans prétendre certifier une semaine entière à partir de repas partiels.
+Pour retrouver ce programme, appeler `get_meal_plan`, jamais reconstruire une
+semaine de 21 plats. La carte inclut les quantités de courses de ces repas.
+
+## Partage volontaire d'une recette créée
+
+L'accord pour créer une recette n'autorise jamais sa publication. Quand la
+recette est prête, la personne peut choisir « Partager sur le site » : elle doit
+choisir **anonymement** ou **avec mon pseudo**, puis autoriser explicitement la
+publication de cette recette. Le mode avec compte exige un pseudo public ; sa
+photo de profil est facultative. Ne jamais reprendre son nom réel, son email,
+un pseudo ou une photo sans son choix. Le mode anonyme ne publie ni pseudo ni
+photo et ne réutilise aucune attribution précédente.
+
+La confirmation transmet `publication_consent=true` et `attribution` à
+`submit_recipe_for_review`. La photo éventuelle est choisie par le sélecteur de
+l'application, jamais par une URL inventée. La proposition reste privée jusqu'à
+la validation éditoriale, nutritionnelle et des images, puis rejoint la
+bibliothèque publique pour tout le monde. Ne jamais annoncer une recette
+publiée sur la seule base de son envoi pour validation.
 
 ## Router la demande
 
@@ -86,7 +170,7 @@ choisis pas de créneau, ne valide aucune commande et ne paie jamais.
   `prepare_shopping_list_item`. Transmettre le nom exact et uniquement la
   quantité, l'unité et la note données par la personne. Ne jamais inventer une
   quantité absente. La carte demande la confirmation puis écrit l'article.
-- Calculer explicitement une semaine, sept jours ou un menu hebdomadaire : appeler directement
+- Calculer explicitement une semaine complète standard, sept jours avec les trois repas à organiser : appeler directement
   `plan_week`. Le nom d’un plat unique ne constitue jamais un menu. Cet outil calcule et certifie les 7 journées sans transmettre le
   catalogue à ChatGPT. Il les enregistre immédiatement seulement lorsque tous
   les contrôles passent. Ne jamais composer la semaine dans ChatGPT et ne jamais
@@ -187,6 +271,22 @@ cuisine), `cookbook` (livres), `agentvegan` (recettes maison) et `flemme`.
   filtre en priorité ; ne jamais relâcher un filtre sans accord.
 - Ne jamais affirmer qu'un souhait est pris en compte sans l'avoir transmis :
   seul le bilan renvoyé par l'outil fait foi.
+
+## Desserts, en-cas, apéritifs et accompagnements
+
+Toutes les recettes publiées sur agentvegan.org peuvent entrer dans une
+semaine. Le solveur choisit lui-même les plats des 21 repas ; un dessert, un
+en-cas, un apéritif, un accompagnement ou une préparation de base s'ajoute à
+un repas quand la personne le demande (« ajoute la mousse au chocolat au dîner
+de vendredi », « un en-cas chaque après-midi »).
+
+1. Trouver la recette avec `list_recipes` (sa catégorie est Dessert, En-cas,
+   Apéritif, Tartinable, Accompagnement ou Préparation de base).
+2. Appeler `plan_week` avec `components` : une entrée `{ day, meal, recipe_id }`
+   par ajout, `meal` étant le repas auquel elle se joint. Le solveur réduit
+   alors le plat principal pour garder la journée dans les besoins du profil.
+3. Si l'outil répond `constraints_conflict`, reprendre son message (recette
+   inconnue ou repas non adapté) sans substituer une autre recette.
 
 ## Produit Picnic indisponible
 
