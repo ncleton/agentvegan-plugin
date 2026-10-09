@@ -53,5 +53,3 @@ ou une adresse précise. Une demande d’établissement n’est jamais une quest
 - Ne jamais présenter une commande, un paiement ou une modification de panier comme automatique sans confirmation explicite de l'utilisateur.
 - Garder tous les textes destinés aux utilisateurs en français naturel.
 - Valider le plugin et les manifestes des catalogues avant chaque publication.
-
-
