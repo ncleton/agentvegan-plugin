@@ -5,11 +5,11 @@
   "files": [
     {
       "path": ".claude-plugin/plugin.json",
-      "sha256": "edbb863b861ae71b900399917efa43294c536b4476de8512fcc8ea03f3954e9e"
+      "sha256": "3a619e7437e32a90b0b19d2dbb6fa1e63444bd7e6f3cfe3bb10e96ba5562f351"
     },
     {
       "path": ".codex-plugin/plugin.json",
-      "sha256": "2bed2ac9fdbf7c9a3c380aa5c036c050475fc45bc0f4e24118d5fbb8b75b3535"
+      "sha256": "5fc272f2c7a6ac9eef3ebb3794ee6658b68affbe9868f563fcb64cff77d8342a"
     },
     {
       "path": ".mcp.json",
