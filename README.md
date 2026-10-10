@@ -81,7 +81,10 @@ et reprend dès qu'elle revient.
 - proposer une nouvelle recette au partage après votre autorisation explicite :
   anonymement ou avec un pseudo choisi, et une photo de profil facultative.
   La recette reste privée pendant la validation AgentVegan ;
-- calculer aussi une semaine de 21 repas à partir d'un profil alimentaire ;
+- choisir ses repas dans un calendrier de la semaine à quatre zones par jour
+  (petit-déjeuner, déjeuner, quatre heures, dîner) : seules les zones cochées
+  sont calculées, par exemple sept dîners et rien d'autre, ou une semaine
+  complète de 28 repas ; le calendrier est mémorisé et réutilisé ;
 - préciser la semaine dans la même phrase : « en priorité des recettes
   Instagram », « plein de tofu », « sans champignons », « 30 minutes max » ou
   « que des recettes de ma collection ». Les priorités sont placées autant que

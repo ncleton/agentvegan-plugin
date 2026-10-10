@@ -92,12 +92,17 @@ choisis pas de créneau, ne valide aucune commande et ne paie jamais.
   saisit elle-même ses identifiants et son code éventuel sur cette page.
   Si AgentVegan demande les autorisations Picnic, faire ouvrir le consentement
   par l'application hôte et ne jamais demander une commande de terminal.
-- Une demande de repas partiels, batch cooking, congélation, céréales déjà
-  choisies ou nombre variable de repas appelle `prepare_meal_plan` avec la
-  demande complète et suit la section « Respecter la demande de repas avant
-  tout calcul » de `planifier-agentvegan`. Ne jamais appeler `plan_week` vide
-  pour ces demandes.
-- « Planifie-moi une semaine végane » sans autre contrainte de structure appelle `plan_week` avec `request_text`. Si le
+- Une demande de repas limités à certaines zones (« seulement mes dîners », « pas
+  de petit-déjeuner », « un goûter le mercredi ») appelle `plan_week` avec
+  `calendar` : une entrée `{ day, meal }` par jour et par zone demandée
+  (Petit-déjeuner, Déjeuner, Quatre heures, Dîner), rien de plus. Seules ces
+  zones sont calculées, avec leur part des besoins. `get_meal_calendar` et
+  `save_meal_calendar` lisent et modifient le calendrier enregistré.
+- Une demande de batch cooking, congélation, céréales déjà choisies ou nombre
+  variable de portions appelle `prepare_meal_plan` avec la demande complète et
+  suit la section « Respecter la demande de repas avant tout calcul » de
+  `planifier-agentvegan`. Ne jamais appeler `plan_week` vide pour ces demandes.
+- « Planifie-moi une semaine végane » sans autre contrainte de structure appelle `plan_week` avec `request_text` et sans `calendar` (le calendrier enregistré, sinon trois repas par jour, s'applique). Si le
   profil est incomplet, laisser la carte demander uniquement les champs
   nécessaires ; ne pas inventer de semaine dans le texte.
   Les souhaits de la même phrase passent dans `preferences` : « en priorité

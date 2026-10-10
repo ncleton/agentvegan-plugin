@@ -1,12 +1,12 @@
 interface:
   display_name: "Planifier avec AgentVegan"
-  short_description: "Organise mes repas selon mes contraintes"
-  default_prompt: "Utilise $planifier-agentvegan pour organiser les repas que je demande, avec les recettes du site en priorité et des recettes sur mesure si je les autorise."
+  short_description: "Calcule les repas de mon calendrier"
+  default_prompt: "Utilise $planifier-agentvegan pour calculer seulement les repas de mon calendrier (par exemple un dîner par jour), avec les recettes du site en priorité."
 dependencies:
   tools:
     - type: "mcp"
       value: "agentvegan"
-      description: "Profil, repas flexibles, recettes sur mesure et courses AgentVegan"
+      description: "Profil, calendrier de repas, repas flexibles, recettes sur mesure et courses AgentVegan"
       transport: "streamable_http"
       url: "https://mcp.agentvegan.org/mcp"
 policy:

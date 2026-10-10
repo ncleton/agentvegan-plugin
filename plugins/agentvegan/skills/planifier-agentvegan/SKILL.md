@@ -1,6 +1,6 @@
 ---
 name: planifier-agentvegan
-description: "Afficher ou modifier le profil AgentVegan, préparer les repas réellement demandés (menus partiels, batch cooking, aliments fixes, en-cas) ou calculer une semaine complète explicitement demandée. Utiliser seulement pour le profil, une semaine ou un menu hebdomadaire explicites, une liste de courses liée à cette semaine ou un panier Picnic. Ne jamais utiliser pour un plat unique nommé : bœuf bourguignon, raclette, risotto ou tartiflette utilisent le véganiseur."
+description: "Afficher ou modifier le profil AgentVegan, définir son calendrier de repas (jusqu'à quatre zones par jour : petit-déjeuner, déjeuner, quatre heures, dîner) et calculer seulement les repas choisis, préparer des repas en lot ou des aliments déjà choisis, ou calculer une semaine explicitement demandée. Utiliser seulement pour le profil, une semaine ou un menu hebdomadaire explicites, une liste de courses liée à cette semaine ou un panier Picnic. Ne jamais utiliser pour un plat unique nommé : bœuf bourguignon, raclette, risotto ou tartiflette utilisent le véganiseur."
 ---
 
 # Planifier avec AgentVegan
@@ -37,6 +37,35 @@ utilisent Camoufox. Ne demande pas d'installer un MCP séparé.
 Ne change pas de magasin, de compte ou de navigateur automatiquement. Ne
 choisis pas de créneau, ne valide aucune commande et ne paie jamais.
 
+## Calendrier de repas
+
+Une semaine AgentVegan a quatre zones par jour : **Petit-déjeuner**,
+**Déjeuner**, **Quatre heures** (le goûter) et **Dîner**. Seules les zones
+choisies sont calculées, chacune avec sa part de la journée (25 %, 35 %, 10 %
+et 30 %). « Un dîner par jour pendant sept jours » donne sept dîners, jamais
+vingt et un repas.
+
+- Dès que la personne limite ses repas (« seulement mes dîners », « pas de
+  petit-déjeuner », « un goûter le mercredi », « je mange le midi au travail »),
+  appeler directement `plan_week` avec `calendar` : une entrée `{ day, meal }`
+  par jour et par zone demandée, rien de plus. Un jour sans zone n'apparaît pas.
+  Ne jamais cocher une zone que la personne n'a pas demandée.
+- Sans `calendar`, `plan_week` applique le calendrier enregistré de la
+  personne, sinon la semaine standard de trois repas par jour. Un calendrier
+  transmis est enregistré par défaut ; `save_calendar=false` pour une demande
+  ponctuelle.
+- `get_meal_calendar` affiche le calendrier enregistré et `save_meal_calendar`
+  le modifie sans recalculer ; appeler ensuite `plan_week` pour les repas.
+- Énergie et plafonds de sécurité sont vérifiés pour chaque jour sur les seules
+  zones planifiées. Les minima et les ratios d'énergie sont vérifiés sur une
+  journée complète, ou sur l'ensemble des repas isolés de la semaine. Un résultat
+  `saved_with_warnings` liste les besoins non couverts, que la carte affiche.
+- Si `plan_week` répond `MEAL_CALENDAR_REQUIRED`, le rappeler avec `calendar`.
+  Si le calendrier est refusé (`MEAL_CALENDAR_INVALID`), reprendre son message.
+- Si `plan_week` répond `candidate_pool_exhausted`, reprendre son message et
+  son `next_action` : ajouter une zone, assouplir un filtre ou retirer un plat
+  fixé. Ne jamais assouplir un plafond de sécurité.
+
 ## Respecter la demande de repas avant tout calcul
 
 Cette section prend priorité sur le parcours de semaine standard ci-dessous.
@@ -44,9 +73,10 @@ Conserver les contraintes des messages précédents jusqu'à ce que la personne
 les modifie explicitement. Une préférence du profil ne remplace jamais son
 choix dans la conversation.
 
-- Dîners seulement, cinq midis au travail, batch cooking, congélation, aliments
-  déjà choisis au matin, en-cas ou nombre variable de repas : appeler
-  `prepare_meal_plan`, jamais `plan_week` sans transmettre ces contraintes.
+- Batch cooking, congélation, aliments déjà choisis au matin ou nombre variable
+  de portions : appeler `prepare_meal_plan`, jamais `plan_week` sans transmettre
+  ces contraintes. Des repas limités à certaines zones, sans lot ni aliment fixé,
+  relèvent du calendrier ci-dessus.
 - Dans `meal_request.request_text`, transmettre la demande complète. Dans
   `slots`, mettre uniquement les créneaux demandés, avec jour, repas, nombre
   de portions et identifiant unique. Un aliment déjà choisi utilise
@@ -170,8 +200,8 @@ publiée sur la seule base de son envoi pour validation.
   `prepare_shopping_list_item`. Transmettre le nom exact et uniquement la
   quantité, l'unité et la note données par la personne. Ne jamais inventer une
   quantité absente. La carte demande la confirmation puis écrit l'article.
-- Calculer explicitement une semaine complète standard, sept jours avec les trois repas à organiser : appeler directement
-  `plan_week`. Le nom d’un plat unique ne constitue jamais un menu. Cet outil calcule et certifie les 7 journées sans transmettre le
+- Calculer explicitement une semaine, sept jours, un menu hebdomadaire ou les repas d'un calendrier : appeler directement
+  `plan_week`, avec `calendar` quand la personne limite ses repas. Le nom d’un plat unique ne constitue jamais un menu. Cet outil calcule et certifie les journées du calendrier sans transmettre le
   catalogue à ChatGPT. Il les enregistre immédiatement seulement lorsque tous
   les contrôles passent. Ne jamais composer la semaine dans ChatGPT et ne jamais
   appeler d'abord l'état du compte ou le catalogue.
@@ -214,14 +244,14 @@ tâche planifiée ou d'une suppression restent distinctes.
    `plan_week` enregistre quand même la semaine avec `status: saved_with_warnings`.
    Les signaler brièvement sans demander d'acceptation et sans bloquer l'affichage.
 4. S'il répond `outcome: success` avec `status: certified` ou
-   `status: saved_with_warnings`, la carte affiche les 21 repas, le résumé des
+   `status: saved_with_warnings`, la carte affiche les repas du calendrier, le résumé des
    courses et, si Picnic est connecté, le bouton « Ajouter au panier Picnic » en
    haut. `plan_week` a déjà vérifié les produits Picnic : n’appeler ni
    `get_picnic_connection_status` ni `start_picnic_validation` ensuite.
 5. Sous la carte, écrire uniquement la phrase renvoyée par `plan_week`, par
    exemple « Ta semaine est prête. Touche « Ajouter au panier Picnic » en haut de
    la carte. » Quand des souhaits ont été transmis, cette phrase contient aussi
-   leur bilan réel (par exemple « 2 repas sur 21 suivent ta priorité… ») : la
+   leur bilan réel (par exemple « 2 repas sur 7 suivent ta priorité… ») : la
    reprendre telle quelle. Ne pas répéter que la semaine a été calculée, ne pas
    résumer les repas et ne jamais expliquer la mécanique interne. La
    programmation de la semaine suivante est proposée dans la carte.
@@ -275,15 +305,16 @@ cuisine), `cookbook` (livres), `agentvegan` (recettes maison) et `flemme`.
 ## Desserts, en-cas, apéritifs et accompagnements
 
 Toutes les recettes publiées sur agentvegan.org peuvent entrer dans une
-semaine. Le solveur choisit lui-même les plats des 21 repas ; un dessert, un
-en-cas, un apéritif, un accompagnement ou une préparation de base s'ajoute à
+semaine. Le solveur choisit lui-même les plats des repas du calendrier ; un
+en-cas chaque après-midi active la zone Quatre heures dans `calendar`. Un dessert,
+un apéritif, un accompagnement ou une préparation de base précis s'ajoute à
 un repas quand la personne le demande (« ajoute la mousse au chocolat au dîner
-de vendredi », « un en-cas chaque après-midi »).
+de vendredi »).
 
 1. Trouver la recette avec `list_recipes` (sa catégorie est Dessert, En-cas,
    Apéritif, Tartinable, Accompagnement ou Préparation de base).
 2. Appeler `plan_week` avec `components` : une entrée `{ day, meal, recipe_id }`
-   par ajout, `meal` étant le repas auquel elle se joint. Le solveur réduit
+   par ajout, `meal` étant la zone du calendrier à laquelle elle se joint. Le solveur réduit
    alors le plat principal pour garder la journée dans les besoins du profil.
 3. Si l'outil répond `constraints_conflict`, reprendre son message (recette
    inconnue ou repas non adapté) sans substituer une autre recette.

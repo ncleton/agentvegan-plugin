@@ -5,11 +5,11 @@
   "files": [
     {
       "path": ".claude-plugin/plugin.json",
-      "sha256": "3320692875fa755577389cabb961c414889d427794d6015c36ba9d70fab45a3e"
+      "sha256": "dba1fa6b2e1220b1aa1267e5102076d0d73f8fdaab179bd4ed11a41af6ed6b54"
     },
     {
       "path": ".codex-plugin/plugin.json",
-      "sha256": "702acb86521da79d7d05ba1d3ab2bd79817bd2e006f94a5d861edc559095a298"
+      "sha256": "a27d6d1e7167f355c8b0eaf0f51a05cafa5b4df65674706cae2e6e5756b617ba"
     },
     {
       "path": ".mcp.json",
@@ -21,7 +21,7 @@
     },
     {
       "path": "assets/public-recipe-catalog.json",
-      "sha256": "3f4c160969434de6be2e563e581e37e1bf9a5d788a8af9910ea34f0b96cf4992"
+      "sha256": "30999303c7e40f36ab913c4bf8e6bcd958b41275098d2abc475c46577f3b1d08"
     },
     {
       "path": "assets/public-recipe-details.json",
@@ -41,19 +41,19 @@
     },
     {
       "path": "skills/planifier-agentvegan/SKILL.md",
-      "sha256": "896da0d7b7fd1a66ce3505052e8e1f7ae9143fb7759a37f1539f00884b312ff4"
+      "sha256": "d46a31bfff584f0d1a64bed766c2bf7e3bbd152b49a736e6cb9903dcfe98a123"
     },
     {
       "path": "skills/planifier-agentvegan/agents/openai.yaml",
-      "sha256": "4d53236ff1f1ef4ba780cae88bed0785a2b6ac8a572ae5466b97cedd4d124013"
+      "sha256": "338ca54ed74a005b61c28599869d9ab7eb19bd90fa9c9587f7a6ed83dbae59ca"
     },
     {
       "path": "skills/planifier-agentvegan/references/contracts.md",
-      "sha256": "e3f31dfc45a168908bf087129bd4587e5b995ba23fcbc23ff8f6be8cdd575945"
+      "sha256": "6a0b45e39171f382f8b111ee8d5583513f01363805f9e11276d780d8daf18a88"
     },
     {
       "path": "skills/planifier-agentvegan/scripts/portable-solver.mjs",
-      "sha256": "e7b599b9ce42f8539a3f28e0ab1e18b652c7ca4b2d78807f4d0d0d4312a25336"
+      "sha256": "0b50aeafd233ca82e0acdffd2bda1d6939e513594fc7b90f0e7703d886128c00"
     },
     {
       "path": "skills/planifier-agentvegan/scripts/solve-week.mjs",
@@ -69,7 +69,7 @@
     },
     {
       "path": "skills/utiliser-agentvegan/SKILL.md",
-      "sha256": "2350eb51b44830da1bc1e92b77c42cf2c24b7b91c133ac60b50f23f609406a68"
+      "sha256": "df536f0560776b745148a25ec8ad9306b13f5aa1e35fb7bcab576ca71878a955"
     },
     {
       "path": "skills/utiliser-agentvegan/agents/openai.yaml",
