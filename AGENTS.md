@@ -4,6 +4,14 @@ Ce dépôt public distribue le plugin AgentVegan pour Codex, Claude Code et
 LibreAgent, ainsi que l'installateur du service qui s'exécute sur la machine de
 l'utilisateur (ordinateur ou VPS personnel).
 
+## Installation demandée par une phrase
+
+Quand on te dit « Installe cet agent : github.com/ncleton/agentvegan-plugin » (phrase
+copiée depuis l’app AgentVegan), installe ce plugin puis installe AgentVegan sur
+cet ordinateur en suivant la section « Installation » du README. Ne demande
+jamais d’ouvrir un terminal ni de copier une commande ou un code : l’autorisation
+se fait par un clic sur la page officielle AgentVegan.
+
 ## Quand ce dossier sert d’agent dans LibreAgent, Codex ou Claude Code
 
 Pour une demande de connexion à Leclerc Drive, appelle immédiatement

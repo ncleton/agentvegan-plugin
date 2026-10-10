@@ -19,6 +19,9 @@ Il faut une machine sous **macOS ou Linux** (Windows arrive bientôt). L'agent
 installe lui-même Node.js s'il manque : vous n'ouvrez pas de terminal et vous ne
 copiez aucun code.
 
+**Phrase courte** : dans ChatGPT ou Claude sur votre ordinateur, écrivez
+« Installe cet agent : github.com/ncleton/agentvegan-plugin ». L'agent fait le reste.
+
 **Avec Codex** (application ChatGPT pour ordinateur, onglet Codex, ou Codex en
 ligne de commande), écrivez :
 
