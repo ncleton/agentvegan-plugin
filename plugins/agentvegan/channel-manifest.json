@@ -5,11 +5,11 @@
   "files": [
     {
       "path": ".claude-plugin/plugin.json",
-      "sha256": "dba1fa6b2e1220b1aa1267e5102076d0d73f8fdaab179bd4ed11a41af6ed6b54"
+      "sha256": "08db3f1cd31923893de4fb00bb838ec37790354b93e0c0e76b420c1987e1d03d"
     },
     {
       "path": ".codex-plugin/plugin.json",
-      "sha256": "a27d6d1e7167f355c8b0eaf0f51a05cafa5b4df65674706cae2e6e5756b617ba"
+      "sha256": "e76475e6ce490a3b5d417650d576174227f656e08a4861161d056229cc47d1ce"
     },
     {
       "path": ".mcp.json",
@@ -29,7 +29,7 @@
     },
     {
       "path": "installer/install-agentvegan.mjs",
-      "sha256": "83735ed62abcb63c13edb7f2153f786786d4ade67b328c5c99de8e20cceb44c0"
+      "sha256": "aa726c07afe1d8b742e93fb1abb737df2eb1633a7d321b1a72e4e8768d54d982"
     },
     {
       "path": "native-drive-connectors.json",
@@ -37,7 +37,7 @@
     },
     {
       "path": "skills/installer-agentvegan/SKILL.md",
-      "sha256": "331a69c46981261b4ef31ce75a3897c2cc08ee4b58bc16b719b6cb0acf4f2a4d"
+      "sha256": "f5c48c6f0cd49138487a0bb5f29cd393b96bb1cbcdbc1e80c560a41e29d5714a"
     },
     {
       "path": "skills/planifier-agentvegan/SKILL.md",

@@ -12,7 +12,13 @@
 //   4. attend que la machine soit connectée au serveur.
 //
 // Utilisation : node install-agentvegan.mjs --pairing-code <code>
+//               AGENTVEGAN_PAIRING_CODE=<code> node install-agentvegan.mjs
 //               node install-agentvegan.mjs --update
+//
+// Une fois installé, le service se met à jour seul quand une nouvelle version
+// est publiée (scripts/decision-models/self-update.mjs). --update ne sert
+// qu'aux machines installées avant cette mise à jour automatique, ou pour
+// réparer une installation.
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { chmod, mkdir, readFile, rename, writeFile } from "node:fs/promises";
@@ -63,7 +69,9 @@ async function main() {
   let config = {};
   try { config = JSON.parse(await readFile(configPath, "utf8")); } catch { config = {}; }
 
-  const pairingCode = argument("--pairing-code");
+  // Le code peut aussi venir de l'environnement, pour ne pas apparaître dans
+  // la liste des processus quand l'installation est lancée à distance.
+  const pairingCode = argument("--pairing-code") ?? (process.env.AGENTVEGAN_PAIRING_CODE || null);
   if (pairingCode !== null) {
     if (!/^[-_A-Za-z0-9]{40,}$/u.test(pairingCode)) fail("Code d'association invalide ou incomplet. Demande un nouveau code à AgentVegan.");
     const response = await api("/api/decision/device/pair", { method: "POST", body: { token: pairingCode, platform: os, label: hostname().slice(0, 80) || "Machine AgentVegan" } });

@@ -57,6 +57,18 @@ La machine doit rester allumée pour calculer les menus et faire les courses.
 Si elle est éteinte, AgentVegan l'indique (« En attente de votre ordinateur »)
 et reprend dès qu'elle revient.
 
+Le service AgentVegan se met ensuite à jour tout seul : dans la demi-heure qui
+suit chaque nouvelle version, quand la machine ne travaille pas, il se prépare
+pendant que l'ancien répond, bascule puis revient à l'ancienne version si la
+nouvelle ne se connecte pas. Une machine installée avant cette mise à jour
+automatique doit être mise à jour une fois : « Mets à jour AgentVegan sur cette
+machine ».
+
+**Depuis l'app AgentVegan sur iPhone** (onglet Chat), associez votre ordinateur
+avec la commande proposée, ou commandez un ordinateur distant : l'agent, le
+plugin et le service AgentVegan s'installent tout seuls. Sans ordinateur,
+l'app garde vos recettes, vos semaines, Picnic et le partage de Reels.
+
 ## Ce que le plugin permet
 
 - chercher des recettes véganes et afficher leur fiche complète ;

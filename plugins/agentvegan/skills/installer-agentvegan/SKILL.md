@@ -63,6 +63,12 @@ Pour une mise à jour d'une machine déjà associée :
 node ../../installer/install-agentvegan.mjs --update
 ```
 
+Le service se met ensuite à jour seul : dans la demi-heure qui suit chaque
+nouvelle version, quand la machine ne travaille pas. `--update` ne sert qu'à
+une machine installée avant la mise à jour automatique (`get_decision_settings`
+renvoie `execution.device.needs_manual_update: true`) ou à réparer une
+installation dont `execution.device.update_error` décrit l'échec.
+
 ## 4. Connecter Picnic sur cette machine
 
 Appelle `get_picnic_connection_status`. Si Picnic n'est pas connecté, appelle
